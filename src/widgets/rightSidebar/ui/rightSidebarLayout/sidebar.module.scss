@@ -1,0 +1,15 @@
+.sidebar-social {
+  position: sticky;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  padding: 30px;
+  background-color: white;
+}
+
+.sidebar-drawer {
+  max-width: min-content !important;
+}

@@ -10,7 +10,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'prettier',
   ],
-  ignorePatterns: [".eslintrc.cjs", "vite.config.ts", "tailwind.config.js"],
+  ignorePatterns: [".eslintrc.cjs", "vite.config.ts", "tailwind.config.js", ".types/**/*"],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -22,10 +22,12 @@ module.exports = {
   },
   plugins: ['react-refresh', 'import', 'promise', 'simple-import-sort'],
   rules: {
-    // 'react-refresh/only-export-components': [
-    //   'warn',
-    //   { allowConstantExport: true },
-    // ],
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
     '@typescript-eslint/no-use-before-define': [
       'error',
       {
@@ -46,6 +48,8 @@ module.exports = {
         checksVoidReturn: false,
       },
     ],
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
     'simple-import-sort/imports': [
       'warn',
       {

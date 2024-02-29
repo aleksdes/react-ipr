@@ -1,14 +1,14 @@
-import '../shared/theme/index.scss';
+import '../shared/ui/theme/index.scss';
 
-import React from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 
 import { ThemeProvider } from '@material-tailwind/react';
 
-import App from './App.tsx';
 import { appRouter } from './appRouter';
+import { appStore } from './appStore.ts';
 
 const root = document.getElementById('root') as HTMLElement;
 
@@ -20,11 +20,11 @@ const initApp = () => {
 initApp();
 
 ReactDOM.createRoot(root).render(
-  <React.StrictMode>
+  <StrictMode>
     <Provider store={appStore}>
       <ThemeProvider>
-        <App />
+        <RouterProvider router={appRouter()} />
       </ThemeProvider>
     </Provider>
-  </React.StrictMode>
+  </StrictMode>
 );

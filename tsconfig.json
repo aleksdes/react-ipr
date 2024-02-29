@@ -18,12 +18,19 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "typeRoots": ["node_modules/@types", "types/"],
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"],
+    },
+    "types": ["node"],
   },
   "include": [
     "vite.config.ts",
     ".eslintrc.cjs",
-    "src"
+    "src",
+    "types"
   ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
 }
