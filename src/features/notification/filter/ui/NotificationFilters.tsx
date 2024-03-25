@@ -1,14 +1,24 @@
-import { HTMLAttributes, useState } from 'react';
+import { HTMLAttributes, useEffect, useState } from 'react';
+import { NotificationFilterValueType } from '@/features/notification/filter/model/types.ts';
+import { useAppDispatch } from '@/shared/model';
 
 import { Button, Chip } from '@material-tailwind/react';
 import cn from 'classnames';
+import { fetchNotificationAction } from 'entities/notification';
 import {
   notificationFilters,
   NotificationFilterType,
 } from 'features/notification/filter/model';
 
 export function NotificationFilters(props: HTMLAttributes<HTMLElement>) {
-  const [active, setActive] = useState('');
+  const dispatch = useAppDispatch();
+  const [active, setActive] = useState<NotificationFilterValueType>(null);
+
+  useEffect(() => {
+    const filters = { isRead_like: active ? active !== 'unRead' : active };
+
+    dispatch(fetchNotificationAction({ url: '', filters }));
+  }, [active]);
 
   return (
     <div className={cn(props.className, 'flex gap-3 flex-wrap')}>

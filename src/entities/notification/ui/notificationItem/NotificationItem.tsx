@@ -16,9 +16,19 @@ export function NotificationItem({
 
   const dataEvent = () => {
     if (!data?.createdAt) return '--:--';
-    if (typeof data.createdAt === 'string')
-      return dayjs(data.createdAt).format('HH:mm');
-    return dayjs.unix(data.createdAt).format('HH:mm');
+    const startToday = dayjs().startOf('day').unix();
+    const startYesterday = dayjs().subtract(1, 'day').startOf('day').unix();
+    const dataItem =
+      typeof data.createdAt === 'string'
+        ? dayjs(data.createdAt).unix()
+        : data.createdAt;
+
+    if (dataItem >= startToday) return dayjs.unix(dataItem).format('HH:mm');
+
+    if (dataItem >= startYesterday && dataItem < startToday)
+      return 'yesterday ' + dayjs.unix(dataItem).format('HH:mm');
+
+    return dayjs.unix(dataItem).format('DD-MM HH:mm');
   };
 
   return (
@@ -36,7 +46,9 @@ export function NotificationItem({
         additionalInfo={data?.eventMessage}
       />
       <div className="flex flex-col items-end p-3 pr-5">
-        <p className="text-[12px] font-medium text-gray-500">{dataEvent()}</p>
+        <p className="text-[12px] w-max font-medium text-gray-500">
+          {dataEvent()}
+        </p>
         {!data?.isRead && (
           <div className="w-[12px] h-[12px] rounded-full border-2 border-white bg-blue-500 my-auto" />
         )}

@@ -1,13 +1,10 @@
 import { HTMLAttributes } from 'react';
 
-import { UserIcon } from '@heroicons/react/24/solid';
 import { Avatar, Badge, Typography } from '@material-tailwind/react';
 import cn from 'classnames';
 
 type UserBadgePropsType = {
   isShowInfo: boolean;
-  isShowBaseInfo: boolean;
-  isShowAdditionalInfo: boolean;
   sizeAvatar: string | number;
   baseInfo: string;
   additionalInfo: string;
@@ -16,15 +13,22 @@ type UserBadgePropsType = {
   avatarBorder: string;
 };
 
-export function UserBadge({
+export function GroupBadge({
   isShowInfo = true,
   isBadgeVisible = false,
   sizeAvatar = 'h-[40px] w-[40px] min-w-[40px]',
-  isShowBaseInfo = true,
-  isShowAdditionalInfo = true,
   avatarBorder = 'border-2 border-white',
   ...props
 }: Partial<UserBadgePropsType> & HTMLAttributes<HTMLDivElement>) {
+  const getTitleNotAvatar = () => {
+    if (!props.baseInfo) return 'NN';
+    const titleInfo: string[] = props.baseInfo?.split(' ');
+    return (
+      titleInfo[0].charAt(0).toUpperCase() +
+      titleInfo[1].charAt(0).toUpperCase()
+    );
+  };
+
   return (
     <div
       className={cn(props?.className, 'flex flex-row items-center')}
@@ -50,9 +54,13 @@ export function UserBadge({
             />
           ) : (
             <div
-              className={cn('rounded-full bg-white', sizeAvatar, avatarBorder)}
+              className={cn(
+                'rounded-full bg-blue-800 flex justify-center items-center',
+                sizeAvatar,
+                avatarBorder
+              )}
             >
-              <UserIcon className="text-gray-300" />
+              <span className="text-white">{getTitleNotAvatar()}</span>
             </div>
           )}
         </Badge>
@@ -60,16 +68,9 @@ export function UserBadge({
 
       {isShowInfo && (
         <div className="flex flex-col">
-          {isShowBaseInfo && (
-            <Typography className="font-bold text-sm">
-              {props.baseInfo || ''}
-            </Typography>
-          )}
-          {isShowAdditionalInfo && (
-            <Typography color="gray" className="text-xs font-normal">
-              {props.additionalInfo || ''}
-            </Typography>
-          )}
+          <Typography className="font-bold text-sm">
+            {props.baseInfo || ''}
+          </Typography>
         </div>
       )}
     </div>

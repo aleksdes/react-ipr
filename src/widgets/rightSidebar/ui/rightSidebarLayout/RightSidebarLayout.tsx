@@ -16,9 +16,11 @@ import css from './sidebar.module.scss';
 
 export function RightSidebarLayout() {
   const { type, isSidebarShow } = useAppSelector(selectSidebarMediaSlice);
+  const { headerHeight, announcementHeight } = useAppSelector(selectTheme);
   const dispatch = useAppDispatch();
   const sidebar: Ref<HTMLDivElement> = useRef(null);
-  const { headerHeight, announcementHeight } = useAppSelector(selectTheme);
+
+  const drawer: Ref<HTMLDivElement> = useRef(null);
 
   const { width } = useWindowSize();
   const isDesktop = width > 1440;
@@ -50,6 +52,7 @@ export function RightSidebarLayout() {
 
       <aside>
         <Drawer
+          ref={drawer}
           placement="right"
           open={isSidebarShow}
           onClose={closeDrawerRight}

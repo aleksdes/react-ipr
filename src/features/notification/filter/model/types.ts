@@ -1,4 +1,4 @@
-export type NotificationFilterValueType = '' | 'isRead';
+export type NotificationFilterValueType = null | 'unRead';
 
 export type NotificationFilterType = {
   id: string | number;

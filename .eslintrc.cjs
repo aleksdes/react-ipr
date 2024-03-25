@@ -10,7 +10,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'prettier',
   ],
-  ignorePatterns: [".eslintrc.cjs", "vite.config.ts", "tailwind.config.js", ".types/**/*"],
+  ignorePatterns: [".eslintrc.cjs", "vite.config.ts", "tailwind.config.js", ".types/**/*", "db.js", "db.ts"],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -27,7 +27,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-explicit-any": "off",
     '@typescript-eslint/no-use-before-define': [
       'error',
       {
