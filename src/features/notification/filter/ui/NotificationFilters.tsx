@@ -1,24 +1,30 @@
 import { HTMLAttributes, useEffect, useState } from 'react';
-import { NotificationFilterValueType } from '@/features/notification/filter/model/types.ts';
-import { useAppDispatch } from '@/shared/model';
-
-import { Button, Chip } from '@material-tailwind/react';
-import cn from 'classnames';
-import { fetchNotificationAction } from 'entities/notification';
+import { fetchNotificationAction } from '@/entities/notification';
+import { selectSidebarMediaSlice } from '@/entities/rightSidebar';
+import { NotificationFilterValueType } from '@/features/notification/filter';
 import {
   notificationFilters,
   NotificationFilterType,
-} from 'features/notification/filter/model';
+} from '@/features/notification/filter/model';
+import { useAppDispatch, useAppSelector } from '@/shared/model';
+
+import { Button, Chip } from '@material-tailwind/react';
+import cn from 'classnames';
 
 export function NotificationFilters(props: HTMLAttributes<HTMLElement>) {
   const dispatch = useAppDispatch();
+  const { isSidebarShow } = useAppSelector(selectSidebarMediaSlice);
   const [active, setActive] = useState<NotificationFilterValueType>(null);
 
   useEffect(() => {
-    const filters = { isRead_like: active ? active !== 'unRead' : active };
+    const filters = {
+      isRead_like: active ? active !== 'unRead' : active,
+      _sort: 'createdAt',
+      _order: 'desc',
+    };
 
-    dispatch(fetchNotificationAction({ url: '', filters }));
-  }, [active]);
+    isSidebarShow && dispatch(fetchNotificationAction({ url: '', filters }));
+  }, [active, isSidebarShow]);
 
   return (
     <div className={cn(props.className, 'flex gap-3 flex-wrap')}>

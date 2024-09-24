@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { ProfilePage } from '@/pages/profile/index.ts';
 import { navigationMap } from '@/shared/model';
 
 import { BaseLayout } from './layouts';
@@ -11,52 +12,7 @@ export const appRouter = () =>
       children: [
         {
           path: navigationMap.home,
-          element: (
-            <div>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-              <p>home data</p>
-            </div>
-          ),
+          element: <ProfilePage />,
         },
       ],
     },

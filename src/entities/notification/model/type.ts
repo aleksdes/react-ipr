@@ -1,11 +1,11 @@
-import type { UserType } from '@/entities/user';
+import type { UserType } from '@/entities/users';
 
 export type UserNotificationType = Partial<
   Pick<UserType, 'id' | 'name' | 'middleName' | 'avatar'>
 >;
 
 export interface NotificationType {
-  id: number;
+  id: string;
   user: UserNotificationType;
   isRead: boolean;
   createdAt: string | number;

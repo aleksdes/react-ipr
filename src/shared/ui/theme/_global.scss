@@ -34,7 +34,7 @@ body {
   }
 }
 
-.scroll {
+%scroll {
   &::-webkit-scrollbar {
     width: 7px;
     height: 7px;
@@ -67,6 +67,14 @@ body {
   }
 }
 
+.scroll {
+  @extend %scroll;
+}
+
+@mixin scroll {
+  @extend %scroll;
+}
+
 .not-scroll {
   /* Скрываем scrollbar для Chrome, Safari и Opera */
   &::-webkit-scrollbar {
@@ -79,5 +87,6 @@ body {
 }
 
 html {
-  @apply scroll
+  @apply scroll;
+  scrollbar-gutter: stable;
 }

@@ -5,4 +5,5 @@ export {
   selectNotification,
   fetchNotificationAction,
   updateNotificationAction,
+  fetchNotificationActionCounter,
 } from '@/entities/notification/model/selectors.ts';

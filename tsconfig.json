@@ -21,11 +21,19 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "typeRoots": ["node_modules/@types", "types/"],
-    "baseUrl": "./src",
+//    "baseUrl": "./src",
+//    "paths": {
+//      "@/*": ["*"],
+//    },
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["*"],
+      "@/*": ["src/*"],
+      "~/*": ["src/*"]
     },
+
     "types": ["node"],
+
+
   },
   "include": [
     "vite.config.ts",

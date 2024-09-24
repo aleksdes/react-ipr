@@ -1,9 +1,11 @@
 import React from 'react';
+import { selectSessionUser } from '@/entities/user';
+import { useAppSelector } from '@/shared/model';
+import { UserBadge } from '@/shared/ui';
 import { profileMenuItems } from '@/widgets/header/model';
 
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import {
-  Avatar,
   Button,
   Menu,
   MenuHandler,
@@ -14,6 +16,7 @@ import {
 
 export function HeaderProfileMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const { sessionUser } = useAppSelector(selectSessionUser);
 
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -25,13 +28,12 @@ export function HeaderProfileMenu() {
           color="blue-gray"
           className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
         >
-          <Avatar
-            variant="circular"
-            size="md"
-            alt=""
-            className="p-1"
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+          <UserBadge
+            isShowInfo={false}
+            urlAvatar={sessionUser?.avatar}
+            sizeAvatar="h-[45px] w-[45px] min-w-[45px]"
           />
+
           <ChevronDownIcon
             strokeWidth={3}
             className={`h-4 w-4 text-gray-500 transition-transform ${

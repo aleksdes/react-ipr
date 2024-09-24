@@ -1,9 +1,9 @@
 import { HTMLAttributes } from 'react';
 import type { NotificationType } from '@/entities/notification';
+import { getDayDate } from '@/shared/lib/use';
 import { UserBadge } from '@/shared/ui';
 
 import cn from 'classnames';
-import dayjs from 'dayjs';
 
 type NotificationItemProps = {
   data: NotificationType;
@@ -16,19 +16,7 @@ export function NotificationItem({
 
   const dataEvent = () => {
     if (!data?.createdAt) return '--:--';
-    const startToday = dayjs().startOf('day').unix();
-    const startYesterday = dayjs().subtract(1, 'day').startOf('day').unix();
-    const dataItem =
-      typeof data.createdAt === 'string'
-        ? dayjs(data.createdAt).unix()
-        : data.createdAt;
-
-    if (dataItem >= startToday) return dayjs.unix(dataItem).format('HH:mm');
-
-    if (dataItem >= startYesterday && dataItem < startToday)
-      return 'yesterday ' + dayjs.unix(dataItem).format('HH:mm');
-
-    return dayjs.unix(dataItem).format('DD-MM HH:mm');
+    return getDayDate(data?.createdAt);
   };
 
   return (
@@ -38,6 +26,9 @@ export function NotificationItem({
         !data?.isRead ? 'bg-[#F8FAFC]' : '',
         props.className
       )}
+      onClick={props.onClick}
+      onMouseEnter={props.onMouseEnter}
+      onMouseLeave={props.onMouseLeave}
     >
       <UserBadge
         className="p-5"

@@ -1,13 +1,14 @@
+import { useEffect } from 'react';
 import { useWindowSize } from 'react-use';
 import { selectTheme } from '@/entities/theme';
-import { useAppSelector } from '@/shared/model';
+import { fetchSessionUserAction } from '@/entities/user';
+import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { BaseLayout as BaseLayoutApp } from '@/shared/ui';
+import { Announcement } from '@/widgets/announcement';
 import { Header } from '@/widgets/header';
 import { NavSidebar } from '@/widgets/navSidebar';
 import { navSidebarSettings } from '@/widgets/navSidebar';
 import { RightSidebarLayout } from '@/widgets/rightSidebar';
-
-import { Announcement } from 'widgets/announcement';
 
 /**
  * ✅ FSD Best practice
@@ -19,6 +20,8 @@ import { Announcement } from 'widgets/announcement';
  * Pass widgets as props to layout
  */
 export function BaseLayout() {
+  const dispatch = useAppDispatch();
+
   const { headerHeight, announcementHeight, isSidebarMini } =
     useAppSelector(selectTheme);
   const { width } = useWindowSize();
@@ -30,6 +33,11 @@ export function BaseLayout() {
         ? navSidebarSettings.widthMini
         : navSidebarSettings.width) + 'px'
     : '0';
+
+  useEffect(() => {
+    console.log('fetchSessionUserAction');
+    dispatch(fetchSessionUserAction());
+  }, []);
 
   return (
     <BaseLayoutApp

@@ -1,2 +1,2 @@
 export const selectSidebarMediaSlice = (state: RootState) =>
-  state.sidebarMediaSlice;
+  state.sidebarMediaReducer;

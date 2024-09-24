@@ -6,5 +6,9 @@ export const notificationFilters: NotificationFilterType[] = [
     title: 'All Notification',
     value: null,
   },
-  { id: 'unread', title: 'Unread', value: 'unRead' },
+  {
+    id: 'unread',
+    title: 'Unread',
+    value: 'unRead',
+  },
 ];

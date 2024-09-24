@@ -1,16 +1,16 @@
 import { createElement, Ref, useEffect, useRef } from 'react';
 import { useWindowSize } from 'react-use';
+import {
+  rightSidebarType,
+  selectSidebarMediaSlice,
+  setSidebarShow,
+} from '@/entities/rightSidebar';
 import { selectTheme } from '@/entities/theme';
 import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { sidebarByType } from '@/widgets/rightSidebar/model';
 
 import { Drawer, IconButton, Typography } from '@material-tailwind/react';
 import cn from 'classnames';
-import {
-  rightSidebarType,
-  selectSidebarMediaSlice,
-  setSidebarShow,
-} from 'entities/rightSidebar';
 
 import css from './sidebar.module.scss';
 

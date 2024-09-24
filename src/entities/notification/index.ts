@@ -6,5 +6,6 @@ export {
   selectNotification,
   fetchNotificationAction,
   updateNotificationAction,
+  fetchNotificationActionCounter,
 } from '@/entities/notification/model';
 export type { NotificationType } from '@/entities/notification/model';

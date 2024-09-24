@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
 import { animated, useSpringValue } from '@react-spring/web';
+import { selectSessionUser } from '@/entities/user';
+import { useAppSelector } from '@/shared/model';
+import { UserBadge } from '@/shared/ui';
 
 import {
-  Avatar,
   Badge,
   ListItem,
   ListItemPrefix,
@@ -19,6 +21,8 @@ export function NavSidebarMenuItemProfile({
   mini,
   isEvent,
 }: MenuItemProfileProps) {
+  const { sessionUser } = useAppSelector(selectSessionUser);
+
   const opacity = useSpringValue(0, {
     config: {
       duration: 100,
@@ -39,19 +43,21 @@ export function NavSidebarMenuItemProfile({
             overlap="circular"
             className="border-2 border-white"
           >
-            <Avatar
-              src="https://docs.material-tailwind.com/img/face-2.jpg"
-              alt="avatar"
-              className="h-[35px] w-[35px] min-w-[35px] border-2 border-white"
+            <UserBadge
+              isShowInfo={false}
+              urlAvatar={sessionUser?.avatar}
+              sizeAvatar="h-[35px] w-[35px] min-w-[35px]"
             />
           </Badge>
         </ListItemPrefix>
 
         {!mini && (
           <animated.div style={{ opacity }}>
-            <Typography className="font-bold text-sm">Angela Lee</Typography>
+            <Typography className="font-bold text-sm">
+              {`${sessionUser?.name} ${sessionUser?.middleName}`}
+            </Typography>
             <Typography color="gray" className="text-xs font-normal">
-              @anglee
+              {sessionUser?.nikName}
             </Typography>
           </animated.div>
         )}

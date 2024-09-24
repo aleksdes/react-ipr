@@ -1,4 +1,4 @@
-import { rightSidebarType } from 'entities/rightSidebar';
+import { rightSidebarType } from '@/entities/rightSidebar';
 
 import { SidebarNotification, SidebarSocialMedia } from '../ui';
 
