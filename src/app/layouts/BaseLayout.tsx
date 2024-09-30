@@ -35,7 +35,6 @@ export function BaseLayout() {
     : '0';
 
   useEffect(() => {
-    console.log('fetchSessionUserAction');
     dispatch(fetchSessionUserAction());
   }, []);
 

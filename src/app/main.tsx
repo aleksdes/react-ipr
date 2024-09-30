@@ -1,4 +1,4 @@
-import '../shared/ui/theme/index.scss';
+import '../shared/ui/theme/styles/index.scss';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { StrictMode } from 'react';

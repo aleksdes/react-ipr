@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { FriendsPage } from '@/pages/friends/index.ts';
 import { ProfilePage } from '@/pages/profile/index.ts';
 import { navigationMap } from '@/shared/model';
 
@@ -13,6 +14,10 @@ export const appRouter = () =>
         {
           path: navigationMap.home,
           element: <ProfilePage />,
+        },
+        {
+          path: navigationMap.friends,
+          element: <FriendsPage />,
         },
       ],
     },

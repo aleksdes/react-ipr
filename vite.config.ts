@@ -11,16 +11,20 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         'tailwind-config': path.resolve(__dirname, './tailwind.config.js'),
-        '@/': '/src/',
-        '~/': '/src/',
+        '@/': path.resolve(__dirname, './src/'),
+        '~/': path.resolve(__dirname, './src/'),
       },
     },
     server: {
       host: '0.0.0.0',
       port: 3000,
     },
+    optimizeDeps: {
+      include: ['**/*.scss'], // Include all .scss files
+    },
     css: {
       devSourcemap: mode === 'development',
+      preprocessorOptions: { scss: { modules: true } },
     },
   };
 });

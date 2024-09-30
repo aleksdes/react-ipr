@@ -1,6 +1,6 @@
 import { rightSidebarType } from '@/entities/rightSidebar';
 
-import { SidebarNotification, SidebarSocialMedia } from '../ui';
+import { SidebarNotificationList, SidebarSocialMedia } from '../ui';
 
 export const sidebarByType = {
   [rightSidebarType.socialMedia]: {
@@ -8,7 +8,7 @@ export const sidebarByType = {
     title: '',
   },
   [rightSidebarType.notification]: {
-    component: SidebarNotification,
+    component: SidebarNotificationList,
     title: 'Notification',
   },
 };

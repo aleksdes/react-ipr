@@ -1,0 +1,7 @@
+@import '../../../../shared/ui/theme/styles/global';
+
+.sidebar-drawer {
+  max-width: min-content !important;
+  scrollbar-gutter: stable;
+  @include scroll;
+}

@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { Button, Chip } from '@material-tailwind/react';
 import cn from 'classnames';
 
-export function NotificationFilters(props: HTMLAttributes<HTMLElement>) {
+export function NotificationFiltersFeature(props: HTMLAttributes<HTMLElement>) {
   const dispatch = useAppDispatch();
   const { isSidebarShow } = useAppSelector(selectSidebarMediaSlice);
   const [active, setActive] = useState<NotificationFilterValueType>(null);

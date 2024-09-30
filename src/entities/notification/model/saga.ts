@@ -33,7 +33,6 @@ function* fetchNotifications(
 function* fetchNotificationsCounter(
   action: PayloadAction<{ url?: string; filters?: { [key: string]: any } }>
 ) {
-  console.log('fetchNotificationsCounter');
   const { data, errors }: IResponseReturn = yield call(
     Api.getData,
     action.payload?.url,

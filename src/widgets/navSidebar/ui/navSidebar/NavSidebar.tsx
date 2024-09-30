@@ -1,8 +1,9 @@
 import { createElement, Ref, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useWindowSize } from 'react-use';
 import { animated, useSpringValue } from '@react-spring/web';
 import { selectTheme } from '@/entities/theme';
-import { useAppSelector } from '@/shared/model';
+import { navigationMap, useAppSelector } from '@/shared/model';
 import {
   navSidebarMenuItems,
   navSidebarSettings,
@@ -71,43 +72,50 @@ export function NavSidebar() {
       }}
     >
       <List className="p-[10px] min-w-min gap-0">
-        <NavSidebarMenuItemProfile mini={isDesktop && isSidebarMini} />
+        <Link to={navigationMap.home}>
+          <NavSidebarMenuItemProfile mini={isDesktop && isSidebarMini} />
+        </Link>
 
-        {navSidebarMenuItems.map((item) => (
-          <ListItem key={item.title} className="text-slate-500 overflow-hidden">
-            <Badge
-              color="red"
-              invisible={!isSidebarMini || !isDesktop}
-              className="border-2 border-white"
+        {navSidebarMenuItems.map((item, index) => (
+          <Link to={item.link} key={index}>
+            <ListItem
+              key={item.title}
+              className="text-slate-500 overflow-hidden"
             >
-              <ListItemPrefix
-                className={cn(
-                  'pl-[6px]',
-                  isSidebarMini && isDesktop ? 'mr-0' : ''
-                )}
+              <Badge
+                color="red"
+                invisible={!isSidebarMini || !isDesktop}
+                className="border-2 border-white"
               >
-                {createElement(item.icon, { className: 'h-5 w-5' })}
-              </ListItemPrefix>
-            </Badge>
+                <ListItemPrefix
+                  className={cn(
+                    'pl-[6px]',
+                    isSidebarMini && isDesktop ? 'mr-0' : ''
+                  )}
+                >
+                  {createElement(item.icon, { className: 'h-5 w-5' })}
+                </ListItemPrefix>
+              </Badge>
 
-            {(!isSidebarMini || !isDesktop) && (
-              <animated.div
-                style={isDesktop ? { opacity } : {}}
-                className={cn('flex w-full')}
-              >
-                {item.title}
-                <ListItemSuffix>
-                  <Chip
-                    value="14"
-                    size="sm"
-                    variant="filled"
-                    color="red"
-                    className="h-[20px] rounded-full text-[10px] leading-none text-white"
-                  />
-                </ListItemSuffix>
-              </animated.div>
-            )}
-          </ListItem>
+              {(!isSidebarMini || !isDesktop) && (
+                <animated.div
+                  style={isDesktop ? { opacity } : {}}
+                  className={cn('flex w-full')}
+                >
+                  {item.title}
+                  <ListItemSuffix>
+                    <Chip
+                      value="14"
+                      size="sm"
+                      variant="filled"
+                      color="red"
+                      className="h-[20px] rounded-full text-[10px] leading-none text-white"
+                    />
+                  </ListItemSuffix>
+                </animated.div>
+              )}
+            </ListItem>
+          </Link>
         ))}
       </List>
     </Card>

@@ -1,20 +1,20 @@
 import type { NotificationType } from '@/entities/notification';
 import { NotificationItem, selectNotification } from '@/entities/notification';
-import { NotificationFilters } from '@/features/notification/filter';
+import { NotificationFiltersFeature } from '@/features/notification/filter';
 import { useReadNotification } from '@/features/notification/read';
 import { useAppSelector } from '@/shared/model';
 
 import cn from 'classnames';
 
-import css from './style.module.scss';
+import css from './sidebarNotificationList.module.scss';
 
-export function SidebarNotification() {
+export function SidebarNotificationList() {
   const { items } = useAppSelector(selectNotification);
   const { setTimer, clearTimer } = useReadNotification();
 
   return (
     <div className={cn(css.notification)}>
-      <NotificationFilters className="mb-4" />
+      <NotificationFiltersFeature className="mb-4" />
 
       <div className="grid gap-2">
         {(!!items.length &&
