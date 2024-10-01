@@ -11,7 +11,7 @@ import { HeaderBlock } from '@/widgets/rightSidebar/ui/sidebarSocialMedia/header
 import cn from 'classnames';
 
 // import { IResponseReturn, useApi } from '@/shared/api';
-import css from './style.module.scss';
+import css from './sidebarSocialMedia.module.scss';
 
 type PropsType = HTMLAttributes<HTMLDivElement>;
 

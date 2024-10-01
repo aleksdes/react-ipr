@@ -1,4 +1,4 @@
-@import '../../../../shared/ui/theme/styles/global';
+@import '@/shared/ui/theme/styles/global';
 
 .sidebar-social {
   position: sticky;
@@ -10,10 +10,4 @@
   scrollbar-gutter: stable;
   padding: 30px;
   background-color: white;
-}
-
-.sidebar-drawer {
-  max-width: min-content !important;
-  scrollbar-gutter: stable;
-  @include scroll;
 }

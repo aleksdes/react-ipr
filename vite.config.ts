@@ -10,11 +10,12 @@ export default defineConfig(({ mode }) => {
     plugins: [react(), tsconfigPaths(), nodePolyfills()],
     resolve: {
       alias: {
-        'tailwind-config': path.resolve(__dirname, './tailwind.config.js'),
-        '@/': path.resolve(__dirname, './src/'),
-        '~/': path.resolve(__dirname, './src/'),
+        'tailwind-config': 'tailwind.config.js',
+        '@/': '/src/',
+        '~/': '/src/',
       },
     },
+
     server: {
       host: '0.0.0.0',
       port: 3000,

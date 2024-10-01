@@ -1,0 +1,110 @@
+.profile-statistics {
+  display: grid;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  background: white;
+
+  &__header {
+    background: url("src/shared/ui/theme/images/profilePageHeader.svg") center center;
+    background-size: cover;
+    height: 100px;
+
+    @media (min-width: 768px) {
+      height: 192px;
+    }
+  }
+
+  &__box-content {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 25px;
+
+    @media (min-width: 768px) {
+      margin-top: -80px;
+      padding: 0 32px 32px;
+      gap: 15px;
+    }
+  }
+
+  &__box-avatar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__box-name {
+    &--sm {
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+    &--md {
+      display: none;
+
+      @media (min-width: 768px) {
+        display: block;
+      }
+    }
+  }
+
+  &__name {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  &__nick-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: theme('colors.blue-gray.500');
+  }
+
+  &__container-content {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__counter-item {
+    padding: 0 15px;
+    border-right: 2px solid theme('colors.blue-gray.50');
+
+    &:last-child {
+      border: none;
+    }
+
+    @media (min-width: 768px) {
+      padding: 0 30px;
+      border-right: 2px solid theme('colors.blue-gray.50');
+
+      &:last-child {
+        padding-right: 0;
+        border: none;
+      }
+    }
+  }
+
+  &__box-counters {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  &__counter-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  &__counter-count {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
