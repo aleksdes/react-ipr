@@ -1,0 +1,20 @@
+.complete-profile {
+  display: grid;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  background: white;
+  padding: 16px;
+
+  &__title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  &__percent {
+    font-size: 14px;
+    font-weight: 500;
+    color: theme('colors.blue-gray.500');
+  }
+}

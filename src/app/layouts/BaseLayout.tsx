@@ -10,15 +10,6 @@ import { NavSidebar } from '@/widgets/navSidebar';
 import { navSidebarSettings } from '@/widgets/navSidebar';
 import { RightSidebarLayout } from '@/widgets/rightSidebar';
 
-/**
- * ✅ FSD Best practice
- *
- * (1) Devide layout in two modules: dumb layout grid (shared)
- * and smart layout with widgets (this file)
- *
- * (2) Avoid cross-import using slot (render prop) pattern
- * Pass widgets as props to layout
- */
 export function BaseLayout() {
   const dispatch = useAppDispatch();
 

@@ -1,6 +1,6 @@
-import { useEffect, useMemo } from 'react';
-import { fetchProfileInfoAction, selectSessionUser } from '@/entities/user';
-import { useAppDispatch, useAppSelector } from '@/shared/model';
+import { useMemo } from 'react';
+import { selectSessionUser } from '@/entities/user';
+import { useAppSelector } from '@/shared/model';
 import { UserBadge } from '@/shared/ui';
 
 import cn from 'classnames';
@@ -8,12 +8,7 @@ import cn from 'classnames';
 import css from './profileStatistics.module.scss';
 
 export function ProfileStatistics() {
-  const dispatch = useAppDispatch();
   const { sessionUser, profileInfo } = useAppSelector(selectSessionUser);
-
-  useEffect(() => {
-    dispatch(fetchProfileInfoAction());
-  }, []);
 
   function formatNumber(num: number): string {
     if (num >= 1000000) {
@@ -88,12 +83,13 @@ export function ProfileStatistics() {
           </div>
 
           <div className={cn(css['profile-statistics__box-counters'])}>
-            {dataCounters.map((counter) => (
+            {dataCounters.map((counter, index) => (
               <div
                 className={cn(
                   css['profile-statistics__counter-item'],
                   'text-center'
                 )}
+                key={index}
               >
                 <p
                   className={cn(

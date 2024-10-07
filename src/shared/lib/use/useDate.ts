@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import { dayjs } from '@/shared/lib/dayjs';
 
 export function getDayDate(date: string | number): string {
   if (!date) return '--:--';
