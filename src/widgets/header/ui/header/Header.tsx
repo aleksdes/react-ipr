@@ -58,7 +58,7 @@ export function Header() {
           >
             <SidebarBurger />
             {!isDesktop && (
-              <span className="text-[14px] font-medium text-gray-600 ml-1">
+              <span className="text-[14px] font-medium text-blue-gray-600 ml-1">
                 Menu
               </span>
             )}

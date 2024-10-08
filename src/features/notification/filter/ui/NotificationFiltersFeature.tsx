@@ -40,7 +40,7 @@ export function NotificationFiltersFeature(props: HTMLAttributes<HTMLElement>) {
             className={cn(
               active === item.value
                 ? 'bg-[#EFF6FF] text-blue-600'
-                : 'bg-gray-100 text-gray-400',
+                : 'bg-gray-100 text-blue-gray-400',
               'normal-case'
             )}
           />

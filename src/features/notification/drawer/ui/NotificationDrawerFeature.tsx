@@ -49,7 +49,7 @@ export function NotificationDrawerFeature({
             className="flex items-center content-center rounded-full"
             onClick={() => openDrawer(rightSidebarType.notification)}
           >
-            <BellIcon className="h-6 w-6 text-gray-700" />
+            <BellIcon className="h-6 w-6 text-blue-gray-600" />
           </IconButton>
         </Badge>
       )}

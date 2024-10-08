@@ -27,7 +27,7 @@ export function SidebarNotificationList() {
               onMouseLeave={() => clearTimer()}
             />
           ))) || (
-          <p className={cn('text-center text-[14px] text-gray-500 ')}>
+          <p className={cn('text-center text-[14px] text-blue-gray-500')}>
             No unread messages
           </p>
         )}

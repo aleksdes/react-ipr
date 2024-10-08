@@ -1,9 +1,16 @@
 import { PostType } from '@/entities/posts';
 import { selectSessionUser } from '@/entities/user';
+import { PostChangeLikeFeature } from '@/features/post-change-like';
+import { formatNumber } from '@/shared/lib/utils';
 import { useAppSelector } from '@/shared/model';
 import { UserBadge } from '@/shared/ui';
 
-import { PhotoIcon, PlayIcon, StarIcon } from '@heroicons/react/24/outline';
+import {
+  ChatBubbleOvalLeftEllipsisIcon,
+  HeartIcon as HeartIconOutline,
+  ShareIcon,
+} from '@heroicons/react/24/outline';
+import { HeartIcon } from '@heroicons/react/24/solid';
 import { Button } from '@material-tailwind/react';
 import cn from 'classnames';
 
@@ -33,7 +40,7 @@ export function PostItem({ post }: IProps) {
         <div className={cn(css['post__box-imgs'])}>
           {post.images?.map((photo, index) => (
             <img
-              className="rounded-lg object-cover object-center"
+              className="rounded-xl object-cover object-center"
               src={photo}
               alt={'image_' + index}
               key={index}
@@ -44,29 +51,49 @@ export function PostItem({ post }: IProps) {
         <hr className={cn('text-blue-gray-500 mt-3 mb-3 w-[100%] mx-auto')} />
 
         <div className={cn(css['post__box-actions'])}>
+          <PostChangeLikeFeature post={post}>
+            {(props) => (
+              <Button
+                size="sm"
+                variant="text"
+                className={cn(
+                  css['post__btn-actions'],
+                  post.isLicked ? 'text-blue-500' : 'text-blue-gray-500'
+                )}
+                onClick={props.onClick}
+              >
+                {post.isLicked ? (
+                  <HeartIcon className={'min-h-[20px] min-w-[20px] w-[20px]'} />
+                ) : (
+                  <HeartIconOutline
+                    className={'min-h-[20px] min-w-[20px] w-[20px]'}
+                  />
+                )}
+                {formatNumber(post?.likes || 0)} Likes
+              </Button>
+            )}
+          </PostChangeLikeFeature>
+
+          <div
+            className={cn(
+              css['post__btn-actions'],
+              'text-blue-gray-500',
+              'font-sans '
+            )}
+          >
+            <ChatBubbleOvalLeftEllipsisIcon
+              className={'min-h-[20px] min-w-[20px] w-[20px]'}
+            />
+            {formatNumber(post?.comments || 0)} Comments
+          </div>
+
           <Button
             size="sm"
             variant="text"
             className={cn(css['post__btn-actions'], 'text-blue-gray-500')}
           >
-            <PlayIcon className={'min-h-[20px] min-w-[20px] w-[20px]'} />
-            Live Video
-          </Button>
-          <Button
-            size="sm"
-            variant="text"
-            className={cn(css['post__btn-actions'], 'text-blue-gray-500')}
-          >
-            <PhotoIcon className={'min-h-[20px] min-w-[20px] w-[20px]'} />
-            Image/Video
-          </Button>
-          <Button
-            size="sm"
-            variant="text"
-            className={cn(css['post__btn-actions'], 'text-blue-gray-500')}
-          >
-            <StarIcon className={'min-h-[20px] min-w-[20px] w-[20px]'} />
-            Activity
+            <ShareIcon className={'min-h-[20px] min-w-[20px] w-[20px]'} />
+            {formatNumber(post?.share || 0)} Share
           </Button>
         </div>
       </div>

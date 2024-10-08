@@ -13,6 +13,7 @@ const baseErrors = createBaseApiErrors('posts');
 
 export function* postsSagaWatcher() {
   yield takeLatest('FETCH_POSTS', fetchPosts);
+  yield takeLatest('SEND_LIKE_POST', sendLikePost);
 }
 
 function* fetchPosts(
@@ -34,4 +35,23 @@ function* fetchPosts(
   yield data && action.payload.isInfinite
     ? put(postsActions.setMergePosts((data?.data as PostType[]) || data || []))
     : put(postsActions.setPosts((data?.data as PostType[]) || data || []));
+}
+
+function* sendLikePost(
+  action: PayloadAction<{
+    postId: number;
+    value: boolean;
+  }>
+) {
+  const { data, errors }: IResponseReturn = yield call(
+    Api.patchData,
+    { isLicked: action.payload?.value },
+    '/' + action.payload?.postId
+  );
+  if (errors) {
+    toast.error(baseErrors.getById);
+    return;
+  }
+  yield data &&
+    put(postsActions.updatePostsById((data?.data as PostType) || data || {}));
 }

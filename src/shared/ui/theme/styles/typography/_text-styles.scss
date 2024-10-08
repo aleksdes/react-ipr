@@ -1,0 +1,13 @@
+/* --------------- */
+/* - Text styles - */
+/* --------------- */
+
+@import "./mixins";
+
+.font-inter {
+  font-family: $font-family-inter;
+}
+
+.font-roboto {
+  font-family: $font-family-roboto;
+}

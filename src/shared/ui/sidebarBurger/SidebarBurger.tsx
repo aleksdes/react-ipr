@@ -10,7 +10,7 @@ export function SidebarBurger({ className, onClick }: IProps) {
       onClick={onClick}
       variant="text"
       size="sm"
-      className={cn(className, 'text-gray-500')}
+      className={cn(className, 'text-blue-gray-500')}
     >
       <Bars3Icon className="h-6 w-6" />
     </IconButton>

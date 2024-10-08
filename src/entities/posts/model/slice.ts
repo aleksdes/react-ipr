@@ -20,6 +20,14 @@ export const postsSlice = createSlice({
     setMergePosts: (state: PostsState, action: PayloadAction<PostType[]>) => {
       state.posts = [...state.posts, ...action.payload];
     },
+    updatePostsById: (state: PostsState, action: PayloadAction<PostType>) => {
+      const findIndexPost = state.posts.findIndex(
+        (post: PostType) => post.id === action.payload.id
+      );
+      if (findIndexPost === -1) return;
+      const postNewData = { ...state.posts[findIndexPost], ...action.payload };
+      state.posts[findIndexPost] = postNewData;
+    },
   },
 });
 

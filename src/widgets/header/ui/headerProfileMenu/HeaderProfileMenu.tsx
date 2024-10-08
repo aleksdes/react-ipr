@@ -36,7 +36,7 @@ export function HeaderProfileMenu() {
 
           <ChevronDownIcon
             strokeWidth={3}
-            className={`h-4 w-4 text-gray-500 transition-transform ${
+            className={`h-4 w-4 text-blue-gray-500 transition-transform ${
               isMenuOpen ? 'rotate-180' : ''
             }`}
           />

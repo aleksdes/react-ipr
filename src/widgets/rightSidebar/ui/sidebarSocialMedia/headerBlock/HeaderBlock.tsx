@@ -20,7 +20,7 @@ export function HeaderBlock({
         props.className
       )}
     >
-      <Typography className="text-gray-400 text-xs font-bold">
+      <Typography className="text-gray-500 text-xs font-bold">
         {title}
       </Typography>
 

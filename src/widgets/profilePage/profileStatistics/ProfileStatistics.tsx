@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { selectSessionUser } from '@/entities/user';
+import { formatNumber } from '@/shared/lib/utils';
 import { useAppSelector } from '@/shared/model';
 import { UserBadge } from '@/shared/ui';
 
@@ -9,16 +10,6 @@ import css from './profileStatistics.module.scss';
 
 export function ProfileStatistics() {
   const { sessionUser, profileInfo } = useAppSelector(selectSessionUser);
-
-  function formatNumber(num: number): string {
-    if (num >= 1000000) {
-      return (num / 1000000).toFixed(1) + 'M';
-    } else if (num >= 1000) {
-      return (num / 1000).toFixed(1) + 'K';
-    } else {
-      return num.toString();
-    }
-  }
 
   const dataCounters = useMemo(() => {
     return [

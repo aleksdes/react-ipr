@@ -26,7 +26,7 @@ const createProfileDetail = () => {
     postCount: faker.number.int({ min: 50, max: 500 }),
     friendsCount: faker.number.int({ min: 150, max: 1500 }),
     photosCount: faker.number.int({ min: 50, max: 200 }),
-    likesCount: faker.number.int({ min: 1500, max: 10000 }),
+    likesCount: 0,
   }
 }
 

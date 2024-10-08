@@ -37,7 +37,7 @@ export function NotificationItem({
         additionalInfo={data?.eventMessage}
       />
       <div className="flex flex-col items-end p-3 pr-5">
-        <p className="text-[12px] w-max font-medium text-gray-500">
+        <p className="text-[12px] w-max font-medium text-blue-gray-500">
           {dataEvent()}
         </p>
         {!data?.isRead && (

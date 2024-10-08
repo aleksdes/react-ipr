@@ -52,7 +52,7 @@ export function UserBadge({
             <div
               className={cn('rounded-full bg-white', sizeAvatar, avatarBorder)}
             >
-              <UserIcon className="text-gray-300" />
+              <UserIcon className="text-blue-gray-300" />
             </div>
           )}
         </Badge>
