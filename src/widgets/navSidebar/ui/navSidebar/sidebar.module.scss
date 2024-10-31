@@ -13,5 +13,29 @@
   transition-property: width, transform;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
+
+  &__nav-item {
+    color: theme('colors.slate.500');
+
+    &:hover {
+      background: theme('colors.slate.100');
+    }
+
+    &--active {
+      color: theme('colors.blue.500') !important;
+      font-weight: bold;
+      background: theme('colors.slate.100');
+    }
+  }
+
+  &__nav-list-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px;
+    line-height: 1.25;
+    text-align: start;
+    border-radius: 12px;
+  }
 }
 

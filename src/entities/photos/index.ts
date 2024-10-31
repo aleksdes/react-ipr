@@ -6,3 +6,4 @@ export {
   selectPhotos,
   fetchPhotosAction,
 } from './model';
+export { PhotoItem } from './ui';

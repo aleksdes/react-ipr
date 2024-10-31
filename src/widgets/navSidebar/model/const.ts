@@ -11,9 +11,9 @@ import {
 
 export const navSidebarMenuItems: navSidebarMenuItemType[] = [
   { title: 'Friends', link: navigationMap.friends, icon: UserIcon },
-  { title: 'Groups', link: '/', icon: StarIcon },
+  { title: 'Groups', link: navigationMap.groups, icon: StarIcon },
   { title: 'Videos', link: '/', icon: PlayIcon },
-  { title: 'Photos', link: '/', icon: PhotoIcon },
+  { title: 'Photos', link: navigationMap.photos, icon: PhotoIcon },
   { title: 'Events', link: '/', icon: CalendarDaysIcon },
 ];
 

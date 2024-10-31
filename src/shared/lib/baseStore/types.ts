@@ -4,7 +4,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface IPagination {
   _limit: number;
-  _page: number;
+  _start: number;
   total: number;
 }
 export interface IBaseStore<T> {

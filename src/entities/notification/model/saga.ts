@@ -10,7 +10,7 @@ import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
 const baseErrors = createBaseApiErrors('notifications');
 
 export function* notificationSagaWatcher() {
-  yield takeEvery('FETCH_NOTIFICATIONS_COUNTER', fetchNotificationsCounter);
+  yield takeLatest('FETCH_NOTIFICATIONS_COUNTER', fetchNotificationsCounter);
   yield takeLatest('FETCH_NOTIFICATIONS', fetchNotifications);
   yield takeEvery('UPDATE_NOTIFICATIONS', updateNotifications);
 }

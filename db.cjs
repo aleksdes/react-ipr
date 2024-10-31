@@ -1,4 +1,4 @@
-const { NOTIFICATION , USER, PHOTOS,POSTS, PROFILE_DETAIL} = require('./db/index.cjs');
+const { ALBUMS, FRIENDS,GROUPS, NOTIFICATION , USER, PHOTOS,POSTS, PROFILE_DETAIL} = require('./db/index.cjs');
 
 module.exports = ()  => {
   const data = {
@@ -7,7 +7,10 @@ module.exports = ()  => {
     'profile-info': PROFILE_DETAIL,
     photos: PHOTOS,
     posts: POSTS,
+    groups: GROUPS,
+    friends: FRIENDS,
+    albums: ALBUMS
   };
-  // Create 1000 users
+
   return data;
 };

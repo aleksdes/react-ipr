@@ -1,10 +1,13 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
 import { Avatar, Badge, Typography } from '@material-tailwind/react';
 import cn from 'classnames';
 
 type UserBadgePropsType = {
+  additionalSlot: ReactNode;
   isShowInfo: boolean;
+  isShowBaseInfo: boolean;
+  isShowAdditionalInfo: boolean;
   sizeAvatar: string | number;
   baseInfo: string;
   additionalInfo: string;
@@ -16,16 +19,18 @@ type UserBadgePropsType = {
 export function GroupBadge({
   isShowInfo = true,
   isBadgeVisible = false,
-  sizeAvatar = 'h-[40px] w-[40px] min-w-[40px]',
+  isShowBaseInfo = true,
+  isShowAdditionalInfo = true,
+  sizeAvatar = 'h-[40px] w-[40px] min-w-[40px] min-h-[40px]',
   avatarBorder = 'border-2 border-white',
   ...props
 }: Partial<UserBadgePropsType> & HTMLAttributes<HTMLDivElement>) {
   const getTitleNotAvatar = () => {
     if (!props.baseInfo) return 'NN';
-    const titleInfo: string[] = props.baseInfo?.split(' ');
+    const titleInfo: string[] = props.baseInfo?.replace(/-/gi, '').split(' ');
     return (
-      titleInfo[0].charAt(0).toUpperCase() +
-      titleInfo[1].charAt(0).toUpperCase()
+      ((titleInfo[0] && titleInfo[0].charAt(0).toUpperCase()) || '') +
+      ((titleInfo[1] && titleInfo[1].charAt(0).toUpperCase()) || '')
     );
   };
 
@@ -60,19 +65,30 @@ export function GroupBadge({
                 avatarBorder
               )}
             >
-              <span className="text-white">{getTitleNotAvatar()}</span>
+              <span className="text-white font-medium">
+                {getTitleNotAvatar()}
+              </span>
             </div>
           )}
         </Badge>
       </div>
 
-      {isShowInfo && (
+      {isShowInfo && !props.additionalSlot && (
         <div className="flex flex-col">
-          <Typography className="font-bold text-sm">
-            {props.baseInfo || ''}
-          </Typography>
+          {isShowBaseInfo && (
+            <Typography color="black" className="font-bold text-sm">
+              {props.baseInfo || ''}
+            </Typography>
+          )}
+          {isShowAdditionalInfo && (
+            <Typography color="gray" className="text-xs font-normal">
+              {props.additionalInfo || ''}
+            </Typography>
+          )}
         </div>
       )}
+
+      {isShowInfo && props.additionalSlot}
     </div>
   );
 }

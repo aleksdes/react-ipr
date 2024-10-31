@@ -1,22 +1,20 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { baseReducers, baseStore, IBaseStore } from '@/shared/lib/baseStore';
+
+import { createSlice } from '@reduxjs/toolkit';
 
 import { PhotoType } from './type';
 
-export type PhotosState = {
-  photos: PhotoType[];
-};
+export type PhotosState = IBaseStore<PhotoType>;
 
 const initialState: PhotosState = {
-  photos: [],
+  ...baseStore<PhotoType>(),
 };
 
 export const photosSlice = createSlice({
   name: 'photos',
   initialState,
   reducers: {
-    setPhotos: (state: PhotosState, action: PayloadAction<PhotoType[]>) => {
-      state.photos = action.payload;
-    },
+    ...baseReducers<PhotoType>(),
   },
 });
 

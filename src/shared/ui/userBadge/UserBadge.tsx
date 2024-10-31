@@ -1,10 +1,11 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
 import { UserIcon } from '@heroicons/react/24/solid';
 import { Avatar, Badge, Typography } from '@material-tailwind/react';
 import cn from 'classnames';
 
 type UserBadgePropsType = {
+  additionalSlot: ReactNode;
   isShowInfo: boolean;
   isShowBaseInfo: boolean;
   isShowAdditionalInfo: boolean;
@@ -19,7 +20,7 @@ type UserBadgePropsType = {
 export function UserBadge({
   isShowInfo = true,
   isBadgeVisible = false,
-  sizeAvatar = 'h-[40px] w-[40px] min-w-[40px]',
+  sizeAvatar = 'h-[40px] w-[40px] min-w-[40px] min-h-[40px]',
   isShowBaseInfo = true,
   isShowAdditionalInfo = true,
   avatarBorder = 'border-2 border-white',
@@ -58,7 +59,7 @@ export function UserBadge({
         </Badge>
       </div>
 
-      {isShowInfo && (
+      {isShowInfo && !props.additionalSlot && (
         <div className="flex flex-col">
           {isShowBaseInfo && (
             <Typography className="font-bold text-sm">
@@ -72,6 +73,8 @@ export function UserBadge({
           )}
         </div>
       )}
+
+      {isShowInfo && props.additionalSlot}
     </div>
   );
 }

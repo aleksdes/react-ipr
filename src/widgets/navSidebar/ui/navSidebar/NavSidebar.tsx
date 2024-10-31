@@ -1,5 +1,5 @@
 import { createElement, Ref, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useWindowSize } from 'react-use';
 import { animated, useSpringValue } from '@react-spring/web';
 import { selectTheme } from '@/entities/theme';
@@ -15,7 +15,6 @@ import {
   Card,
   Chip,
   List,
-  ListItem,
   ListItemPrefix,
   ListItemSuffix,
 } from '@material-tailwind/react';
@@ -27,6 +26,8 @@ export function NavSidebar() {
   const { headerHeight, announcementHeight, isSidebarMini } =
     useAppSelector(selectTheme);
   const sidebar: Ref<HTMLDivElement> = useRef(null);
+
+  const eventCounter = 0;
 
   const { width } = useWindowSize();
   const isDesktop = width > 1440;
@@ -72,19 +73,33 @@ export function NavSidebar() {
       }}
     >
       <List className="p-[10px] min-w-min gap-0">
-        <Link to={navigationMap.home}>
+        <NavLink to={navigationMap.home}>
           <NavSidebarMenuItemProfile mini={isDesktop && isSidebarMini} />
-        </Link>
+        </NavLink>
 
         {navSidebarMenuItems.map((item, index) => (
-          <Link to={item.link} key={index}>
-            <ListItem
+          <NavLink
+            to={item.link}
+            key={index}
+            className={({ isActive }) =>
+              cn(
+                css['sidebar__nav-item'],
+                isActive ? css['sidebar__nav-item--active'] : ''
+              )
+            }
+            title={item.title}
+          >
+            <div
               key={item.title}
-              className="text-slate-500 overflow-hidden"
+              // className="text-slate-500 overflow-hidden"
+              className={cn(
+                css['sidebar__nav-list-item'],
+                'overflow-hidden outline-none transition-all'
+              )}
             >
               <Badge
                 color="red"
-                invisible={!isSidebarMini || !isDesktop}
+                invisible={!isSidebarMini || !isDesktop || !eventCounter}
                 className="border-2 border-white"
               >
                 <ListItemPrefix
@@ -103,19 +118,21 @@ export function NavSidebar() {
                   className={cn('flex w-full')}
                 >
                   {item.title}
-                  <ListItemSuffix>
-                    <Chip
-                      value="14"
-                      size="sm"
-                      variant="filled"
-                      color="red"
-                      className="h-[20px] rounded-full text-[10px] leading-none text-white"
-                    />
-                  </ListItemSuffix>
+                  {!!eventCounter && (
+                    <ListItemSuffix>
+                      <Chip
+                        value={eventCounter}
+                        size="sm"
+                        variant="filled"
+                        color="red"
+                        className="h-[20px] rounded-full text-[10px] leading-none text-white"
+                      />
+                    </ListItemSuffix>
+                  )}
                 </animated.div>
               )}
-            </ListItem>
-          </Link>
+            </div>
+          </NavLink>
         ))}
       </List>
     </Card>

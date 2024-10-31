@@ -1,0 +1,25 @@
+.friend-item {
+  display: grid;
+  background: theme('colors.slate.50');
+
+  &__header {
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+  }
+}

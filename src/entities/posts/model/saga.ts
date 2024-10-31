@@ -40,12 +40,15 @@ function* fetchPosts(
 function* sendLikePost(
   action: PayloadAction<{
     postId: number;
-    value: boolean;
+    value: Partial<PostType>;
   }>
 ) {
   const { data, errors }: IResponseReturn = yield call(
     Api.patchData,
-    { isLicked: action.payload?.value },
+    {
+      isLicked: action.payload?.value.isLicked,
+      likes: action.payload?.value.likes,
+    },
     '/' + action.payload?.postId
   );
   if (errors) {

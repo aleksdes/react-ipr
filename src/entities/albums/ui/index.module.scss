@@ -1,0 +1,24 @@
+.album-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__box-preview {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: theme('colors.slate.100');
+  }
+}

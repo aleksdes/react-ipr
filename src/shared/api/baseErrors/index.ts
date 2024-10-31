@@ -5,6 +5,7 @@ export function createBaseApiErrors(name: string): IBaseApiErrors {
     getList: createApiErrorGetList(name),
     getById: createApiErrorGetById(name),
     updateById: createApiErrorUpdateById(name),
+    removeById: createApiErrorRemoveById(name),
   };
 }
 
@@ -16,4 +17,7 @@ export function createApiErrorGetById(name: string) {
 }
 export function createApiErrorUpdateById(name: string) {
   return `Failed to update ${name}`;
+}
+export function createApiErrorRemoveById(name: string) {
+  return `Failed to remove ${name}`;
 }

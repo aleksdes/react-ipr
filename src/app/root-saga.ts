@@ -1,3 +1,6 @@
+import { albumsSagaWatcher } from '@/entities/albums';
+import { friendsSagaWatcher } from '@/entities/friends';
+import { groupsSagaWatcher } from '@/entities/groups';
 import { notificationSagaWatcher } from '@/entities/notification';
 import { photosSagaWatcher } from '@/entities/photos';
 import { postsSagaWatcher } from '@/entities/posts';
@@ -11,5 +14,8 @@ export function* rootSaga() {
     sessionUserSagaWatcher(),
     photosSagaWatcher(),
     postsSagaWatcher(),
+    groupsSagaWatcher(),
+    friendsSagaWatcher(),
+    albumsSagaWatcher(),
   ]);
 }

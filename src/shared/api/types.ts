@@ -5,10 +5,10 @@ export interface IOptionsUseRequest extends AxiosRequestConfig {
 }
 
 export interface IUseRequest {
-  (data: any, options: IOptionsUseRequest): Promise<IResponseReturn>;
+  (data: any, options: IOptionsUseRequest): Promise<IResponseReturn<any>>;
 }
-export interface IResponseReturn {
-  data?: AxiosResponse;
+export interface IResponseReturn<T = any> {
+  data?: AxiosResponse<T> | T;
   errors?: AxiosError;
 }
 export interface IBaseApi {

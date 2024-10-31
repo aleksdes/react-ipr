@@ -7,7 +7,7 @@ import cn from 'classnames';
 import css from './index.module.scss';
 
 export function Photos() {
-  const { photos } = useAppSelector(selectPhotos);
+  const { items } = useAppSelector(selectPhotos);
 
   return (
     <div className={cn(css['photos'])}>
@@ -19,7 +19,7 @@ export function Photos() {
       </div>
 
       <div className={cn(css['photos__list'])}>
-        {photos?.map((photo, index) => (
+        {items?.map((photo, index) => (
           <img
             className="rounded-lg object-cover object-center"
             src={photo.url}

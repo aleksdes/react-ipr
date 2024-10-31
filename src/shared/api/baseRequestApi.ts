@@ -9,7 +9,7 @@ interface IBaseRequestApi {
   postData: (payload: any, url?: string) => Promise<IResponseReturn>;
   putData: (payload: any, url?: string) => Promise<IResponseReturn>;
   patchData: (payload: any, url?: string) => Promise<IResponseReturn>;
-  deleteData: (url?: string) => Promise<IResponseReturn>;
+  deleteData: (payload?: any, url?: string) => Promise<IResponseReturn>;
 }
 
 export function baseRequestApi(apiUrl: string): IBaseRequestApi {
@@ -32,8 +32,8 @@ export function baseRequestApi(apiUrl: string): IBaseRequestApi {
       return await useApi.patch(apiUrl + url, payload);
     },
 
-    deleteData: async (url = '') => {
-      return await useApi.delete(apiUrl + url, null);
+    deleteData: async (payload: any, url = '') => {
+      return await useApi.delete(apiUrl + url, payload);
     },
   };
 }

@@ -5,6 +5,9 @@ type ApiUrlsType = {
   USERS_URL: string;
   PHOTOS_URL: string;
   POSTS_URL: string;
+  GROUPS_URL: string;
+  FRIENDS_URL: string;
+  ALBUMS_URL: string;
 } & IApiUserUrls;
 
 export const apiUrls: ApiUrlsType = {
@@ -13,4 +16,7 @@ export const apiUrls: ApiUrlsType = {
   ...apiUserUrls,
   PHOTOS_URL: '/photos',
   POSTS_URL: '/posts',
+  GROUPS_URL: '/groups',
+  FRIENDS_URL: '/friends',
+  ALBUMS_URL: '/albums',
 };

@@ -27,6 +27,5 @@ function* fetchPhotos(
     toast.error(baseErrors.getById);
     return;
   }
-  yield data &&
-    put(photosActions.setPhotos((data?.data as PhotoType[]) || data || []));
+  yield data && put(photosActions.setItems((data as PhotoType[]) || []));
 }

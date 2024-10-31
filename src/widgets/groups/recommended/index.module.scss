@@ -1,0 +1,82 @@
+.recommended-card {
+  display: grid;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  background: white;
+
+  &__header {
+    padding: 15px;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 476px) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @media (min-width: 768px) {
+      padding: 25px;
+    }
+  }
+
+  &__box-actions {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    grid-gap: 16px;
+  }
+
+  &__search-btn {
+    width: 48px;
+    height: 48px;
+    max-height: 48px;
+    max-width: 48px;
+    border-color: theme('colors.blue-gray.100');
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  &__add-btn {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    text-transform: capitalize;
+    font-size: 14px;
+    gap: 4px;
+    margin-left: auto;
+  }
+
+  &__box-content {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 20px;
+
+    @media (min-width: 768px) {
+      padding: 25px;
+      gap: 30px;
+    }
+  }
+
+  &__box-content-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__container-list {
+    display: grid;
+    grid-auto-flow: row;
+    gap: 25px;
+
+    @media (min-width: 768px) {
+      grid-auto-flow: column;
+    }
+  }
+}

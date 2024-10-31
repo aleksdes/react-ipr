@@ -1,0 +1,13 @@
+.btn-subscription {
+  background: white;
+  text-transform: capitalize;
+  font-weight: bold;
+  height: 48px;
+  font-size: 14px;
+  box-shadow: none;
+
+  &:focus,
+  &:hover {
+    box-shadow: none;
+  }
+}

@@ -10,7 +10,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 export const baseStore = <T>(): IBaseStore<T> => ({
   meta: {
     _limit: 10,
-    _page: 1,
+    _start: 0,
     total: 0,
   },
   loading: false,
@@ -45,7 +45,7 @@ export const baseReducers = <T>(): IBaseStoreActions<T> => ({
   resetMeta: (state: IBaseStore<T>) => {
     state.meta = {
       _limit: 10,
-      _page: 1,
+      _start: 1,
       total: 0,
     };
   },

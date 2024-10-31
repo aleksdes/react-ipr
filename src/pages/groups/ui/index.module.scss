@@ -1,0 +1,38 @@
+.groups-page {
+  padding: 24px;
+  display: grid;
+  gap: 15px;
+
+  @media (min-width: 768px) {
+    padding: 32px;
+  }
+
+  &__grid-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    align-items: flex-start;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1480px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__container-subscriptions {
+    display: grid;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+    background: white;
+
+    @media (min-width: 768px) {
+      padding: 25px;
+    }
+  }
+}

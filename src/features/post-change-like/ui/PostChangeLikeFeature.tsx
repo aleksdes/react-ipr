@@ -11,10 +11,15 @@ export function PostChangeLikeFeature({ children, post }: IProps) {
   const dispatch = useAppDispatch();
 
   function sendLike() {
+    const isLicked = !post.isLicked;
+
     dispatch(
       fetchSendLikePostAction({
         postId: post.id,
-        value: !post.isLicked,
+        value: {
+          likes: isLicked ? post.likes + 1 : post.likes - 1,
+          isLicked,
+        },
       })
     );
   }

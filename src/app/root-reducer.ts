@@ -1,3 +1,6 @@
+import albumsReducer from '@/entities/albums/model/slice.ts';
+import friendsReducer from '@/entities/friends/model/slice.ts';
+import groupsReducer from '@/entities/groups/model/slice.ts';
 import notificationReducer from '@/entities/notification/model/slice.ts';
 import photosReducer from '@/entities/photos/model/slice.ts';
 import postsReducer from '@/entities/posts/model/slice.ts';
@@ -14,4 +17,7 @@ export const rootReducer = combineReducers({
   sessionUserReducer,
   photosReducer,
   postsReducer,
+  groupsReducer,
+  friendsReducer,
+  albumsReducer,
 });
