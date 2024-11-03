@@ -1,0 +1,22 @@
+.login-page {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  //min-height: 100dvh;
+  height: 100%;
+
+  &__left-block,
+  &__right-block {
+    justify-self: center;
+  }
+
+  &__left-block {
+    background-color: #2563EB;
+    height: 100%;
+    width: 100%;
+
+    img {
+
+    }
+  }
+}

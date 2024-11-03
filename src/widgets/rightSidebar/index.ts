@@ -1,1 +1,1 @@
-export { RightSidebarLayout } from '@/widgets/rightSidebar/ui';
+export { RightSidebarLayout } from './ui';

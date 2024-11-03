@@ -1,20 +1,22 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { Page404 } from '@/pages/404/index.ts';
 import { AlbumPage } from '@/pages/album/index.ts';
 import { FriendsPage } from '@/pages/friends/index.ts';
 import { GroupsPage } from '@/pages/groups/index.ts';
+import { LoginPage } from '@/pages/login';
 import { PhotosPage } from '@/pages/photos/index.ts';
 import { ProfilePage } from '@/pages/profile/index.ts';
 import { navigationMap } from '@/shared/model';
+import { AuthProvider } from '@/shared/ui';
 import { AlbumsPageTab } from '@/widgets/photos/albumsPageTab';
 import { PhotosPageTab } from '@/widgets/photos/photosPageTab';
 
-import { BaseLayout } from './layouts';
+import { AuthLayout, BaseLayout } from './layouts';
 
 export const appRouter = () =>
   createBrowserRouter([
     {
       element: <BaseLayout />,
-      errorElement: <div>error baseLayout</div>,
       children: [
         {
           path: navigationMap.home,
@@ -48,26 +50,38 @@ export const appRouter = () =>
         },
       ],
     },
-    // {
-    //   element: authLayout,
-    //   errorElement: <div>error authLayout</div>,
-    //   children: [
-    //     {
-    //       path: navigationMap.login,
-    //       element: <p>login</p>,
-    //     },
-    //     {
-    //       path: navigationMap.register,
-    //       element: <p>register</p>,
-    //     },
-    //     {
-    //       path: navigationMap.forgotPassword,
-    //       element: <p>forgot-password</p>,
-    //     },
-    //     {
-    //       path: navigationMap.resetPassword,
-    //       element: <p>reset-password</p>,
-    //     },
-    //   ],
-    // },
+    {
+      element: (
+        <AuthProvider>
+          <AuthLayout />
+        </AuthProvider>
+      ),
+      children: [
+        {
+          path: navigationMap.login,
+          element: <LoginPage />,
+          loader: () => {
+            return {
+              isMonoLogo: true,
+            };
+          },
+        },
+        // {
+        //   path: navigationMap.register,
+        //   element: <p>register</p>,
+        // },
+        // {
+        //   path: navigationMap.forgotPassword,
+        //   element: <p>forgot-password</p>,
+        // },
+        {
+          path: navigationMap.resetPassword,
+          element: <p>reset-password</p>,
+        },
+      ],
+    },
+    {
+      path: '*',
+      element: <Page404 />,
+    },
   ]);

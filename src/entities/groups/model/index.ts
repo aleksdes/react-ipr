@@ -1,6 +1,6 @@
-export { groupsSagaWatcher } from '@/entities/groups/model/saga.ts';
-export { groupsActions } from '@/entities/groups/model/slice.ts';
-export type { GroupType } from '@/entities/groups/model/type.ts';
+export { groupsSagaWatcher } from './saga.ts';
+export { groupsActions } from './slice.ts';
+export type { GroupType } from './type.ts';
 export {
   selectGroups,
   fetchJoinedGroupsCountAction,
@@ -8,4 +8,4 @@ export {
   fetchRecommendedGroupsAction,
   joinGroupAction,
   leaveGroupAction,
-} from '@/entities/groups/model/selectors.ts';
+} from './selectors.ts';

@@ -1,2 +1,3 @@
-export { navSidebarSettings } from '@/widgets/navSidebar/model';
+export { type NavSidebarMenuItemType } from './model';
 export { NavSidebar } from './ui';
+export { navSidebarMenuItems, navSidebarSettings } from './lib';

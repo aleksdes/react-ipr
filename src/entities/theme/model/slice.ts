@@ -34,11 +34,6 @@ export const themeSlice = createSlice({
   },
 });
 
-export const {
-  setSidebarMini,
-  updateHeaderHeight,
-  updateAnnouncementHeight,
-  updateSidebarWidth,
-} = themeSlice.actions;
+export const themeActions = themeSlice.actions;
 
 export default themeSlice.reducer;

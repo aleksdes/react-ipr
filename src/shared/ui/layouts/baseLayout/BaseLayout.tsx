@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 
-import css from './layout.module.scss';
+import css from './index.module.scss';
 
 type Props = {
   navbarSlot?: ReactNode;

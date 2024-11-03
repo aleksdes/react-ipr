@@ -1,12 +1,8 @@
 import { Ref, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useWindowSize } from 'react-use';
-import {
-  rightSidebarType,
-  setSidebarShow,
-  setSidebarType,
-} from '@/entities/rightSidebar';
-import { setSidebarMini, updateHeaderHeight } from '@/entities/theme';
+import { rightSidebarType, sidebarMediaActions } from '@/entities/rightSidebar';
+import { themeActions } from '@/entities/theme';
 import { useAppDispatch } from '@/shared/model';
 import { Logo } from '@/shared/ui';
 import { SidebarBurger } from '@/shared/ui';
@@ -26,7 +22,7 @@ export function Header() {
     const handleResize = () => {
       if (header.current) {
         const height: number = header.current.getBoundingClientRect().height;
-        dispatch(updateHeaderHeight(height));
+        dispatch(themeActions.updateHeaderHeight(height));
       }
     };
 
@@ -39,8 +35,8 @@ export function Header() {
   });
 
   const setSideBar = (type: rightSidebarType) => {
-    dispatch(setSidebarType(type));
-    dispatch(setSidebarShow());
+    dispatch(sidebarMediaActions.setSidebarType(type));
+    dispatch(sidebarMediaActions.setSidebarShow());
   };
 
   return (
@@ -54,7 +50,7 @@ export function Header() {
         >
           <div
             className="flex flex-row items-center"
-            onClick={() => dispatch(setSidebarMini())}
+            onClick={() => dispatch(themeActions.setSidebarMini())}
           >
             <SidebarBurger />
             {!isDesktop && (

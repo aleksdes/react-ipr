@@ -1,6 +1,1 @@
-export type { navSidebarMenuItemType } from '@/widgets/navSidebar/model/types.ts';
-
-export {
-  navSidebarMenuItems,
-  navSidebarSettings,
-} from '@/widgets/navSidebar/model/const.ts';
+export type { NavSidebarMenuItemType } from './types.ts';

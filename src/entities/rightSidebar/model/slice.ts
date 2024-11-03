@@ -30,7 +30,6 @@ export const sidebarMediaSlice = createSlice({
   },
 });
 
-export const { setSidebarShow, setSidebarType, clearSidebar } =
-  sidebarMediaSlice.actions;
+export const sidebarMediaActions = sidebarMediaSlice.actions;
 
 export default sidebarMediaSlice.reducer;

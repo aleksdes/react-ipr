@@ -1,6 +1,6 @@
 import { ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react';
 
-export type navSidebarMenuItemType = {
+export type NavSidebarMenuItemType = {
   title: string;
   link: string;
   icon: ForwardRefExoticComponent<

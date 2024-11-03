@@ -1,20 +1,22 @@
 import { navigationMap } from '@/shared/model';
-import { navSidebarMenuItemType } from '@/widgets/navSidebar/model';
 
 import {
-  CalendarDaysIcon,
   PhotoIcon,
-  PlayIcon,
   StarIcon,
   UserIcon,
+  // CalendarDaysIcon,
+  // PlayIcon,
 } from '@heroicons/react/24/outline';
 
-export const navSidebarMenuItems: navSidebarMenuItemType[] = [
+import { type NavSidebarMenuItemType } from '../model';
+
+export const navSidebarMenuItems: NavSidebarMenuItemType[] = [
   { title: 'Friends', link: navigationMap.friends, icon: UserIcon },
   { title: 'Groups', link: navigationMap.groups, icon: StarIcon },
-  { title: 'Videos', link: '/', icon: PlayIcon },
   { title: 'Photos', link: navigationMap.photos, icon: PhotoIcon },
-  { title: 'Events', link: '/', icon: CalendarDaysIcon },
+  // TODO: требует реализации в будущем
+  // { title: 'Videos', link: '/', icon: PlayIcon },
+  // { title: 'Events', link: '/', icon: CalendarDaysIcon },
 ];
 
 export const navSidebarSettings = {

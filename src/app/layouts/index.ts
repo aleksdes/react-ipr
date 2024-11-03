@@ -1,2 +1,2 @@
 export { BaseLayout } from './BaseLayout.tsx';
-// export { authLayout } from './authLayout.tsx';
+export { AuthLayout } from './AuthLayout.tsx';

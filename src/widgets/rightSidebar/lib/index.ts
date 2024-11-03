@@ -1,1 +1,1 @@
-export { sidebarByType } from '@/widgets/rightSidebar/lib/const.ts';
+export { sidebarByType } from './const.ts';

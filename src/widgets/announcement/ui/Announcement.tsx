@@ -1,10 +1,10 @@
 import { type ReactNode, Ref, useEffect, useRef } from 'react';
-import { updateAnnouncementHeight } from '@/entities/theme';
+import { themeActions } from '@/entities/theme';
 import { useAppDispatch } from '@/shared/model';
 
 import cn from 'classnames';
 
-import css from './style.module.scss';
+import css from './index.module.scss';
 
 type Props = {
   children: ReactNode;
@@ -19,7 +19,7 @@ export function Announcement({ children }: Props) {
       if (announcement.current) {
         const height: number =
           announcement.current.getBoundingClientRect().height;
-        dispatch(updateAnnouncementHeight(height));
+        dispatch(themeActions.updateAnnouncementHeight(height));
       }
     };
 

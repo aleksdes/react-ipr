@@ -4,10 +4,9 @@ import {
   LegacyRef,
   useEffect,
   useState,
-  // useEffect,
-  // useState,
 } from 'react';
-import { Api, GroupType } from '@/entities/groups';
+import { Api as ApiFriends, FriendType } from '@/entities/friends';
+import { Api as ApiGroups, GroupType } from '@/entities/groups';
 import { IResponseReturn } from '@/shared/api';
 import { navigationMap } from '@/shared/model';
 import { GroupBadge, UserBadge } from '@/shared/ui';
@@ -15,7 +14,6 @@ import { HeaderBlock } from '@/widgets/rightSidebar/ui/sidebarSocialMedia/header
 
 import cn from 'classnames';
 
-// import { IResponseReturn, useApi } from '@/shared/api';
 import css from './sidebarSocialMedia.module.scss';
 
 type PropsType = HTMLAttributes<HTMLDivElement>;
@@ -23,18 +21,29 @@ type PropsType = HTMLAttributes<HTMLDivElement>;
 export const SidebarSocialMedia = forwardRef(
   ({ className, style }: PropsType, ref: LegacyRef<HTMLDivElement>) => {
     const [groups, setGroups] = useState<GroupType[]>([]);
+    const [contacts, setContacts] = useState<FriendType[]>([]);
 
     useEffect(() => {
-      const fetchData = async () => {
-        const { data }: IResponseReturn = await Api.getData('', {
+      const fetchDataGroups = async () => {
+        const { data }: IResponseReturn = await ApiGroups.getData('', {
           isJoined: true,
           _limit: 5,
           _start: 0,
         });
-        data && setGroups((data?.data as GroupType[]) || data || []);
+        data && setGroups((data as GroupType[]) || []);
       };
 
-      fetchData().catch((e) => console.error(e));
+      const fetchDataContacts = async () => {
+        const { data }: IResponseReturn = await ApiFriends.getData('', {
+          isNewMessage: true,
+          _limit: 5,
+          _start: 0,
+        });
+        data && setContacts((data as FriendType[]) || []);
+      };
+
+      fetchDataGroups().catch((e) => console.error(e));
+      fetchDataContacts().catch((e) => console.error(e));
     }, []);
 
     return (
@@ -43,14 +52,19 @@ export const SidebarSocialMedia = forwardRef(
         style={style}
         className={cn(className, css['social-media'], 'p-[30px]')}
       >
-        <HeaderBlock title="CONTACTS" link="/" className="mb-3" />
+        <HeaderBlock
+          title="CONTACTS"
+          link={navigationMap.friends}
+          className="mb-3"
+        />
         <div className="grid gap-y-3">
-          {[...Array(5)].map((_, i) => (
+          {contacts.map((contact) => (
             <UserBadge
-              key={i}
-              // urlAvatar="https://docs.material-tailwind.com/img/face-5.jpg"
-              baseInfo="Aasfcsd dscsd"
-              additionalInfo="dcsdsdvsdv"
+              key={contact.id}
+              urlAvatar={contact.avatar}
+              baseInfo={`${contact?.name} ${contact?.middleName}`}
+              additionalInfo={contact.nikName}
+              isBadgeVisible={contact.isNewMessage}
             />
           ))}
         </div>

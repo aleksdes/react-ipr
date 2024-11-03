@@ -1,1 +1,1 @@
-export { Announcement } from '@/widgets/announcement/ui';
+export { Announcement } from './ui';

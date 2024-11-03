@@ -4,5 +4,6 @@ export type FriendType = {
   middleName: string;
   avatar: string;
   nikName: string;
+  isNewMessage: boolean;
   createdAt: Date;
 };

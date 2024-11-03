@@ -1,4 +1,4 @@
-export { Api } from '@/entities/groups/api';
+export { Api } from './api';
 export {
   groupsSagaWatcher,
   groupsActions,
@@ -8,6 +8,6 @@ export {
   fetchRecommendedGroupsAction,
   joinGroupAction,
   leaveGroupAction,
-} from '@/entities/groups/model';
-export type { GroupType } from '@/entities/groups/model';
+} from './model';
+export type { GroupType } from './model';
 export { GroupItem } from './ui';

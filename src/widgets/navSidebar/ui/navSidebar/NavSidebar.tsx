@@ -4,10 +4,7 @@ import { useWindowSize } from 'react-use';
 import { animated, useSpringValue } from '@react-spring/web';
 import { selectTheme } from '@/entities/theme';
 import { navigationMap, useAppSelector } from '@/shared/model';
-import {
-  navSidebarMenuItems,
-  navSidebarSettings,
-} from '@/widgets/navSidebar/model';
+import { navSidebarMenuItems, navSidebarSettings } from '@/widgets/navSidebar';
 import { NavSidebarMenuItemProfile } from '@/widgets/navSidebar/ui';
 
 import {
@@ -20,7 +17,7 @@ import {
 } from '@material-tailwind/react';
 import cn from 'classnames';
 
-import css from './sidebar.module.scss';
+import css from './index.module.scss';
 
 export function NavSidebar() {
   const { headerHeight, announcementHeight, isSidebarMini } =

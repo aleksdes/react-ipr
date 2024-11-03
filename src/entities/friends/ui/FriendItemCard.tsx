@@ -32,6 +32,7 @@ export function FriendItemCard({
             urlAvatar={data?.avatar}
             baseInfo={`${data?.name} ${data?.middleName}`}
             additionalInfo={data?.nikName}
+            isBadgeVisible={data?.isNewMessage}
           />
 
           {settingsSlot}

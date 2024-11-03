@@ -3,7 +3,7 @@ import {
   fetchNotificationActionCounter,
   selectNotification,
 } from '@/entities/notification';
-import { rightSidebarType, setSidebarShow } from '@/entities/rightSidebar';
+import { rightSidebarType, sidebarMediaActions } from '@/entities/rightSidebar';
 import { useAppDispatch, useAppSelector } from '@/shared/model';
 
 import { BellIcon } from '@heroicons/react/24/outline';
@@ -29,7 +29,7 @@ export function NotificationDrawerFeature({
     dispatch(fetchNotificationActionCounter({ url: '', filters }));
   }, [items]);
 
-  const closeDrawerRight = () => dispatch(setSidebarShow());
+  const closeDrawerRight = () => dispatch(sidebarMediaActions.setSidebarShow());
 
   return (
     <>

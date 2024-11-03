@@ -1,4 +1,4 @@
-export { FriendItemCard } from '@/entities/friends/ui/FriendItemCard.tsx';
+export { FriendItemCard } from './ui/FriendItemCard.tsx';
 export { Api } from './api';
 
 export {

@@ -10,7 +10,7 @@ function createPost() {
     images: faker.helpers.multiple(() => faker.image.urlLoremFlickr({ category: ['nature', 'paris'] }), {
       count: {
         min: 0,
-        max: 4
+        max: 3
       },
     }),
     isLicked: faker.datatype.boolean(),

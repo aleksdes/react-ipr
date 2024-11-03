@@ -1,4 +1,4 @@
-export { Api, ApiProfile } from '@/entities/user/api';
+export { Api, ApiProfile } from './api';
 export type { SessionUserType, ProfileUserType } from './model';
 export {
   sessionUserActions,

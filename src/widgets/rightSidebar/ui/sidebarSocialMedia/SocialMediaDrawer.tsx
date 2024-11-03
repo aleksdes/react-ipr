@@ -4,7 +4,7 @@ import { useWindowSize } from 'react-use';
 import {
   rightSidebarType,
   selectSidebarMediaSlice,
-  setSidebarShow,
+  sidebarMediaActions,
 } from '@/entities/rightSidebar';
 import { selectTheme } from '@/entities/theme';
 import { useAppDispatch, useAppSelector } from '@/shared/model';
@@ -42,7 +42,7 @@ export function SocialMediaDrawer() {
       : (document.body.style.overflow = 'visible');
   }, [isSidebarShow]);
 
-  const closeDrawerRight = () => dispatch(setSidebarShow());
+  const closeDrawerRight = () => dispatch(sidebarMediaActions.setSidebarShow());
 
   return (
     <>

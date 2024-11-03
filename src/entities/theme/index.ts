@@ -1,7 +1,1 @@
-export {
-  selectTheme,
-  setSidebarMini,
-  updateHeaderHeight,
-  updateAnnouncementHeight,
-  updateSidebarWidth,
-} from './model';
+export { selectTheme, themeActions } from './model';

@@ -1,4 +1,4 @@
-export { friendsSagaWatcher } from '@/entities/friends/model/saga.ts';
+export { friendsSagaWatcher } from './saga.ts';
 export {
   fetchFriendsAction,
   fetchFriendsCountAction,

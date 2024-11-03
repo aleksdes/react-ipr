@@ -1,2 +1,2 @@
-export { NavSidebar } from '@/widgets/navSidebar/ui/navSidebar/NavSidebar.tsx';
-export { NavSidebarMenuItemProfile } from '@/widgets/navSidebar/ui/navSidebarMenuItemProfile/NavSidebarMenuItemProfile.tsx';
+export { NavSidebar } from './navSidebar/NavSidebar.tsx';
+export { NavSidebarMenuItemProfile } from './navSidebarMenuItemProfile/NavSidebarMenuItemProfile.tsx';

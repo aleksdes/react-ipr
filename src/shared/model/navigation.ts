@@ -1,5 +1,4 @@
 export interface INavigationMap {
-  error404: string;
   home: string;
   login: string;
   register: string;
@@ -13,12 +12,11 @@ export interface INavigationMap {
 }
 
 export const navigationMap: INavigationMap = {
-  error404: '/not-found',
   home: '/',
-  login: '/login',
-  register: '/register',
-  forgotPassword: '/forgot-password',
-  resetPassword: '/reset-password',
+  login: '/auth/login',
+  register: '/auth/register',
+  forgotPassword: '/auth/forgot-password',
+  resetPassword: '/auth/reset-password',
   friends: '/friends',
   groups: '/groups',
   photos: '/photos',

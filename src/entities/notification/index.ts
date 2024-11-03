@@ -1,5 +1,5 @@
-export { Api } from '@/entities/notification/api';
-export { NotificationItem } from '@/entities/notification/ui';
+export { Api } from './api';
+export { NotificationItem } from './ui';
 export {
   notificationSagaWatcher,
   notificationsActions,
@@ -7,5 +7,5 @@ export {
   fetchNotificationAction,
   updateNotificationAction,
   fetchNotificationActionCounter,
-} from '@/entities/notification/model';
-export type { NotificationType } from '@/entities/notification/model';
+} from './model';
+export type { NotificationType } from './model';
