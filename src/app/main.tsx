@@ -1,5 +1,6 @@
 import '../shared/ui/theme/styles/index.scss';
 import 'react-toastify/dist/ReactToastify.css';
+import '@/shared/lib/zod-validate';
 
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';

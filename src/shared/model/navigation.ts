@@ -3,7 +3,7 @@ export interface INavigationMap {
   login: string;
   register: string;
   forgotPassword: string;
-  resetPassword: string;
+  verify: string;
   friends: string;
   groups: string;
   photos: string;
@@ -16,7 +16,7 @@ export const navigationMap: INavigationMap = {
   login: '/auth/login',
   register: '/auth/register',
   forgotPassword: '/auth/forgot-password',
-  resetPassword: '/auth/reset-password',
+  verify: '/auth/verify',
   friends: '/friends',
   groups: '/groups',
   photos: '/photos',

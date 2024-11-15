@@ -7,3 +7,5 @@ export {
   AuthProvider,
   AuthContext,
 } from './layouts/authLayout/AuthProvider.tsx';
+export { AuthPagePreviewBlock } from './authPagePreviewBlock/authPagePreviewBlock.tsx';
+export * from './fieldMessage';

@@ -1,11 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { Page404 } from '@/pages/404/index.ts';
 import { AlbumPage } from '@/pages/album/index.ts';
+import { ForgotPasswordPage } from '@/pages/forgotPass';
 import { FriendsPage } from '@/pages/friends/index.ts';
 import { GroupsPage } from '@/pages/groups/index.ts';
 import { LoginPage } from '@/pages/login';
 import { PhotosPage } from '@/pages/photos/index.ts';
 import { ProfilePage } from '@/pages/profile/index.ts';
+import { RegisterPage } from '@/pages/register';
+import { VerifyPage } from '@/pages/verify';
 import { navigationMap } from '@/shared/model';
 import { AuthProvider } from '@/shared/ui';
 import { AlbumsPageTab } from '@/widgets/photos/albumsPageTab';
@@ -66,17 +69,27 @@ export const appRouter = () =>
             };
           },
         },
-        // {
-        //   path: navigationMap.register,
-        //   element: <p>register</p>,
-        // },
-        // {
-        //   path: navigationMap.forgotPassword,
-        //   element: <p>forgot-password</p>,
-        // },
         {
-          path: navigationMap.resetPassword,
-          element: <p>reset-password</p>,
+          path: navigationMap.register,
+          element: <RegisterPage />,
+          loader: () => {
+            return {
+              isMonoLogo: true,
+            };
+          },
+        },
+        {
+          path: navigationMap.forgotPassword,
+          element: <ForgotPasswordPage />,
+          loader: () => {
+            return {
+              isMonoLogo: true,
+            };
+          },
+        },
+        {
+          path: navigationMap.verify,
+          element: <VerifyPage />,
         },
       ],
     },

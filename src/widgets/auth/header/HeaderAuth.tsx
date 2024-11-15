@@ -16,9 +16,9 @@ export function HeaderAuth() {
   const isDesktop = width > 768;
 
   return (
-    <div className={cn(css['header-auth'], 'w-100')}>
+    <div className={cn(css['header-auth'], 'w-full')}>
       <div className={cn(css['header-auth__logo-box'])}>
-        {routeData?.isMonoLogo || !isDesktop ? (
+        {routeData?.isMonoLogo && isDesktop ? (
           <img
             className="w-full object-cover object-center"
             src="/logo-full-white.svg"

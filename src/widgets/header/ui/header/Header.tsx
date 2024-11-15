@@ -40,7 +40,7 @@ export function Header() {
   };
 
   return (
-    <Navbar ref={header} fullWidth className={cn('w-100 px-[10px] py-[10px]')}>
+    <Navbar ref={header} fullWidth className={cn('w-full px-[10px] py-[10px]')}>
       <div className="relative mx-auto flex items-center justify-between">
         <div
           className={cn(

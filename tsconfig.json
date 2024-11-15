@@ -21,25 +21,21 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "typeRoots": ["node_modules/@types", "types/"],
-//    "baseUrl": "./src",
-//    "paths": {
-//      "@/*": ["*"],
-//    },
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
       "~/*": ["src/*"]
     },
 
     "types": ["node"],
-
-
   },
   "include": [
     "vite.config.ts",
     ".eslintrc.cjs",
     "src",
-    "types"
+    "types",
+    "src/**/*.ts",
+    "src/**/*.d.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }],
 }

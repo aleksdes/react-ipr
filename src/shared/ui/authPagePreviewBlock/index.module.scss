@@ -1,0 +1,35 @@
+.preview-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #2563EB;
+  height: 100%;
+  width: 100%;
+
+  img {
+    max-width: 80%;
+
+    @media (min-width: 1440px) {
+      max-width: 55%;
+    }
+  }
+
+  &__title {
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 8px;
+
+    @media (min-width: 1440px) {
+      font-size: 24px;
+    }
+  }
+
+  &__desc {
+    font-size: 14px;
+    line-height: 1.3;
+    color: white;
+  }
+}

@@ -1,0 +1,29 @@
+.field-messages {
+  position: relative;
+  color: theme('colors.blue-gray.500');
+  display: flex;
+  padding: 0px 12px 4px;
+  min-height: 24px;
+  animation: rubberBottomTransition 300ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  &--errors {
+    color: theme('colors.red.500');
+  }
+
+  &__text {
+    font-size: 12px;
+    transition: all;
+    animation: rubberBottomTransition 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @keyframes rubberBottomTransition {
+    0% {
+      transform: translateY(-8px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}

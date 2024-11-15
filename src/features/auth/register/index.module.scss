@@ -1,0 +1,11 @@
+.register-form {
+  max-width: 400px;
+
+  &__input-checkbox {
+    &--error {
+      input {
+        border-color: theme('colors.red.500');
+      }
+    }
+  }
+}
