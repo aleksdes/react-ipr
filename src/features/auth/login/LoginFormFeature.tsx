@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type KeyboardEvent, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { z, zodRules } from '@/shared/lib/zod-validate';
@@ -30,12 +30,29 @@ export function LoginFormFeature() {
     handleSubmit,
     trigger,
     formState: { errors, isValid },
+    setFocus,
   } = useForm({
     resolver: zodResolver(loginFormSchema),
   });
   const [showPass, setShowPass] = useState(false);
 
   const onSubmit = (data: FieldValues) => console.log(data);
+
+  const handleKeyUp = (
+    event: KeyboardEvent<HTMLInputElement>,
+    name: string
+  ) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // предотвращаем выполнение действия по умолчанию
+      setFocus(name);
+    }
+  };
+
+  function onInputHandler(name: string) {
+    setTimeout(async () => {
+      await trigger(name);
+    }, 0);
+  }
 
   return (
     <div className={cn(css['login-form'])}>
@@ -58,6 +75,10 @@ export function LoginFormFeature() {
             crossOrigin="anonymous"
             error={!!errors.email?.message}
             onBlur={() => trigger('email')}
+            onKeyUp={(event) =>
+              !errors.email?.message && handleKeyUp(event, 'password')
+            }
+            onInput={() => onInputHandler('email')}
           />
           <FieldMessage errors={[errors.email?.message as string]} />
         </div>
@@ -74,6 +95,10 @@ export function LoginFormFeature() {
               crossOrigin="anonymous"
               error={!!errors.password?.message}
               onBlur={() => trigger('password')}
+              onInput={() => onInputHandler('password')}
+              onKeyUp={(event) =>
+                !errors.password?.message && handleKeyUp(event, 'remember')
+              }
             />
             <Button
               variant="text"
@@ -118,9 +143,16 @@ export function LoginFormFeature() {
               </Typography>
             }
             containerProps={{
-              className: 'p-[7px]',
+              className: cn(
+                'p-[7px]',
+                errors.remember?.message
+                  ? css['login-form__input-checkbox--error']
+                  : ''
+              ),
             }}
             crossOrigin="anonymous"
+            onInput={() => onInputHandler('remember')}
+            onBlur={() => ({})}
           />
 
           <Link
@@ -136,7 +168,7 @@ export function LoginFormFeature() {
           type="submit"
           className={cn(
             css['login-form__btn-send'],
-            'bg-blue-600 capitalize w-full mt-4'
+            'bg-blue-600 capitalize w-full mt-4 text-[16px]'
           )}
         >
           Sign In

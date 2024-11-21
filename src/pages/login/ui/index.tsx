@@ -35,7 +35,7 @@ export function LoginPage() {
 
         <LoginFormFeature />
 
-        <div className="flex flex-col w-full my-6">
+        <div className="flex flex-col w-full mt-6">
           <div className="flex flex-row items-center justify-between w-full mb-5">
             <hr className="flex border-blue-gray-100 w-[100%] h-[2px]" />
             <Typography className="text-[12px] w-[100%] mx-3 text-blue-gray-400">
@@ -63,7 +63,7 @@ export function LoginPage() {
           </div>
         </div>
 
-        <div className="flex text-[14px] text-blue-gray-500 justify-center w-full">
+        <div className="flex text-[14px] text-blue-gray-500 justify-center w-full py-5">
           <Typography className="flex gap-2">
             Don’t have an account?
             <Link

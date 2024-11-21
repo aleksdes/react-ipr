@@ -25,4 +25,18 @@
       display: flex;
     }
   }
+
+  &__right-block {
+    max-width: 400px;
+    height: 100%;
+    width: 100%;
+    padding: 80px 20px 0;
+    display: grid;
+    grid-template-rows: minmax(0, 100%) auto;
+    align-items: center;
+
+    @media (min-width: 768px) {
+      padding: 0 20px;
+    }
+  }
 }

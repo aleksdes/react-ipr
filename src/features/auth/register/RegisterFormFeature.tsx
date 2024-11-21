@@ -171,12 +171,26 @@ export function RegisterFormFeature() {
             id="isTermsRulesService"
             {...register('isTermsRulesService')}
             label={
-              <div>
-                <Typography className="text-[14px] font-[500]">
-                  By creating an account means you agree to the{' '}
-                  <b>Terms & Conditions</b> and our <b>Privacy Policy</b>
+              <Typography className="flex text-[14px] font-[500]">
+                By creating an account means you agree to the{' '}
+                <Typography
+                  as="a"
+                  href="#"
+                  color="blue"
+                  className="contents font-bold transition-colors hover:text-blue-700 text-[14px]"
+                >
+                  Terms & Conditions{' '}
                 </Typography>
-              </div>
+                and our{' '}
+                <Typography
+                  as="a"
+                  href="#"
+                  color="blue"
+                  className="contents font-bold transition-colors hover:text-blue-700 text-[14px]"
+                >
+                  Privacy Policy
+                </Typography>
+              </Typography>
             }
             containerProps={{
               className: cn(
@@ -200,10 +214,10 @@ export function RegisterFormFeature() {
           type="submit"
           className={cn(
             css['register-form__btn-send'],
-            'bg-blue-600 capitalize w-full mt-2'
+            'bg-blue-600 capitalize w-full mt-4 text-[16px]'
           )}
         >
-          Sign In
+          Sign Up
         </Button>
       </form>
     </div>
