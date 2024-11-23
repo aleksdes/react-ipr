@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { selectPhotos } from '@/entities/photos';
-import { useAppSelector } from '@/shared/model';
+import { navigationMap, useAppSelector } from '@/shared/model';
 
 import cn from 'classnames';
 
@@ -13,7 +13,10 @@ export function Photos() {
     <div className={cn(css['photos'])}>
       <div className={cn(css['photos__header'])}>
         <p className={cn(css['photos__title'])}>Photos</p>
-        <Link to="/" className="text-blue-500 text-sm font-bold">
+        <Link
+          to={navigationMap.photos}
+          className="text-blue-500 text-sm font-bold"
+        >
           See all
         </Link>
       </div>

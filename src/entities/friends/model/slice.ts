@@ -34,7 +34,6 @@ export const friendsSlice = createSlice({
       state.items = state.items.filter(
         (item: FriendType) => item.id !== action.payload
       );
-      console.log('deleteItemById', state.items, action.payload);
     },
   },
 });

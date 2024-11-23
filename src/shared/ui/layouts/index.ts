@@ -1,2 +1,2 @@
 export { BaseLayout } from './baseLayout/BaseLayout.tsx';
-export { AuthProvider } from './authLayout/AuthProvider.tsx';
+export { AuthProvider, AuthContext } from './authLayout/AuthProvider.tsx';

@@ -1,11 +1,8 @@
-export { BaseLayout } from './layouts';
-export { Logo } from './logo/Logo.tsx';
-export { SidebarBurger } from './sidebarBurger/SidebarBurger.tsx';
-export { UserBadge } from './userBadge/UserBadge.tsx';
-export { GroupBadge } from './groupBadge/GroupBadge.tsx';
-export {
-  AuthProvider,
-  AuthContext,
-} from './layouts/authLayout/AuthProvider.tsx';
-export { AuthPagePreviewBlock } from './authPagePreviewBlock/authPagePreviewBlock.tsx';
+export * from './logo';
+export * from './sidebarBurger';
+export * from './userBadge';
+export * from './groupBadge';
+export * from './layouts';
+export * from './authPagePreviewBlock';
 export * from './fieldMessage';
+export * from './rightSidebarHeader';

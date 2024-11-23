@@ -21,7 +21,6 @@ const registerFormSchema = z.object({
   password: z.string().min(8).pipe(zodRules.password),
   isTermsRulesService: z.boolean().refine(
     (val) => {
-      console.log('isTermsRulesService', val);
       return !!val;
     },
     {
