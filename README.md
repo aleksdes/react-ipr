@@ -1,30 +1,91 @@
-# React + TypeScript + Vite
+# Hiphonic
+---
+### Проект интерфейса небольшой социальной сети с использованием методологии архитектуры FSD
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Стек
+- node 18.20.2
+- React18
+- Vite
+- Tailwind + Material-tailwind (https://www.material-tailwind.com/docs)
+- Feature-Sliced Design
+- Redux Toolkit + Redux-Saga (https://redux-saga.js.org, https://redux-toolkit.js.org)
+- Json-server + Faker-js (https://fakerjs.dev, )
 
-Currently, two official plugins are available:
+В основу приложения заложена архитектура FSD. Подробнее прочитать можно тут https://feature-sliced.design
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Установка
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Клонируйте репозиторий на локальную машину.
+2. Установите необходимые зависимости с помощью команды:
+   ```
+   yarn install
+   ```
+3. Запустите проект с помощью команды:
+   ```
+   yarn dev
+   ```
+4. Собрать проект для публикации:
+   ```
+   yarn build
+   ```
 
-- Configure the top-level `parserOptions` property like this:
+## Структура папок
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```
+src/
+|-- app/
+|-- entities/
+|   |-- Entity/
+|   |   |-- ui/      - React компоненты
+|   |   |-- model/   - Бизнес код
+|   |   |-- lib/     - Необязательно! Вспомогательный код, например валидаторы данных
+|   |   |-- index.ts - без логики, только реэкспорт
+|-- features/
+|   |-- Feature1/
+|   |   |-- ui/      - React компоненты
+|   |   |-- model/   - Бизнес код
+|   |   |-- lib/     - Необязательно! Вспомогательный код для model/
+|   |   |-- index.ts - только реэкспорт
+|-- Widgets/
+|   |-- Widget1/
+|   |   |-- Component1.vue
+|   |   |-- Component2.vue
+|   |   |-- index.ts
+|-- shared/
+|   |-- ui/
+|   |  |-- styles/   - Глобальные стили или общие стили для всего приложения
+|   |  |-- index.ts/ - Только реэкспорт
+```
+### Иерархия слоев
+
+Важно соблюдать иерархию основных слоев, правило простое,
+верхний слой не может импортировать слой ниже,
+слой ниже может импортировать из слоя выше
+
+> features слой может использовать наборы компонентов, композиций и вызывать бизнес код из слоя entities,
+> но никак иначе, смотри иерархию
+
+```
+|-- entities
+|   |-- features
+|   |   |-- widgets
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Правила экспорта
+Каждый срез слоя, (например features/feature1, entities/user) должен содержать index.ts файл с реэскпортом публичного api.
+Эскпорт звездочки запрещен, это нарушает принцип ответственности среза, срез предоставляет только публичный API
+который могут использовать другие слои в иерархии, нельзя экспортировать все, экспортируй только результат
+
+> Например из слоя entities/user можно экспортировать модель, стор но нельзя экспортировать различные утилиты, и вспомогательный код
+> который используется только в entities/user
+
+Это плохо
+```ts
+export * from './something'
+```
+Это хорошо
+```ts
+export { useUserStore, type UserEntity } from './model/'
+```
+---------------------
