@@ -1,5 +1,8 @@
 import { HTMLAttributes } from 'react';
-import type { NotificationType } from '@/entities/notification';
+import {
+  NotificationType,
+  UserNotificationType,
+} from '@/entities/notification';
 import { getDayDate } from '@/shared/lib/use';
 import { UserBadge } from '@/shared/ui';
 
@@ -12,7 +15,7 @@ export function NotificationItem({
   data,
   ...props
 }: Partial<NotificationItemProps> & HTMLAttributes<HTMLElement>) {
-  const user = data?.user || {};
+  const user: UserNotificationType | Record<string, any> = data?.user || {};
 
   const dataEvent = () => {
     if (!data?.createdAt) return '--:--';

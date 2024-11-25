@@ -8,4 +8,4 @@ export {
   updateNotificationAction,
   fetchNotificationActionCounter,
 } from './model';
-export type { NotificationType } from './model';
+export type { NotificationType, UserNotificationType } from './model';
