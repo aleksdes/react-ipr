@@ -15,13 +15,6 @@ import { appStore } from './appStore.ts';
 
 const root = document.getElementById('root') as HTMLElement;
 
-// async логика инициализации сторов
-const initApp = () => {
-  return true;
-};
-
-initApp();
-
 ReactDOM.createRoot(root).render(
   <StrictMode>
     <Provider store={appStore}>

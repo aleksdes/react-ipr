@@ -3,8 +3,8 @@
 ### Проект интерфейса небольшой социальной сети с использованием методологии архитектуры FSD
 
 ## Стек
-- node 18.20.2
-- React18
+- node 18
+- React 18
 - Vite
 - Tailwind + Material-tailwind (https://www.material-tailwind.com/docs)
 - Feature-Sliced Design
@@ -29,7 +29,7 @@
    ```
    yarn build
    ```
-
+   
 ## Структура папок
 
 ```

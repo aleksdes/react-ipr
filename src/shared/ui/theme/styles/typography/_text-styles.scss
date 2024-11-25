@@ -2,14 +2,14 @@
 /* - Text styles - */
 /* --------------- */
 
-@import "./mixins";
+@use "mixins";
 
 .font-inter {
-  font-family: $font-family-inter;
+  font-family: mixins.$font-family-inter;
 }
 
 .font-roboto {
-  font-family: $font-family-roboto;
+  font-family: mixins.$font-family-roboto;
 }
 
 .base-title {
