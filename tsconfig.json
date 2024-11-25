@@ -9,6 +9,7 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -37,5 +38,4 @@
     "src/**/*.ts",
     "src/**/*.d.ts"
   ],
-  "references": [{ "path": "./tsconfig.node.json" }],
 }
